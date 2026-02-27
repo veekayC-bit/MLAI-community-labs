@@ -235,3 +235,7 @@ This article covers 4 main points:
 4. **RAG Evaluations in n8n** - How to implement RAG evaluations natively in n8n without external libraries
 
 ---
+
+<a href="https://playful-blinker-866.notion.site/Connecting-v0-to-Supabase-Step-by-Step-Guide-30c56510f2bd8050a187ca5acd19fd89">
+  <img src="https://img.shields.io/badge/Next%20Lesson-->-black?style=for-the-badge" alt="Next Lesson"/>
+</a>

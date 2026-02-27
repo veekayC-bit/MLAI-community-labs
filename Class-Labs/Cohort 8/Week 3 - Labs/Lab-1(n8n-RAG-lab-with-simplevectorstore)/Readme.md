@@ -226,8 +226,13 @@ If you encounter any issues:
 - Review the Prerequisites section to ensure all accounts and keys are properly configured
 - Verify that your document chunks were processed and stored correctly in Simple Vector Store
 - Ensure all OpenAI API credentials are valid and have sufficient credits
-- Connect with Sachin
+- Put on the slack
 
 ---
 
+<a href="https://github.com/sachin0034-tech/MLAI-community-labs/tree/main/Class-Labs/Cohort%208/Week%203%20-%20Labs/Lab-3(n8n-Agentic-RAG)">
+  <img src="https://img.shields.io/badge/Next%20Lesson-→-black?style=for-the-badge" alt="Next Lesson"/>
+</a>
+
+---
 **Happy Building! 🚀**
