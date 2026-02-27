@@ -157,3 +157,6 @@ Go to [https://ai.azure.com](https://ai.azure.com) → Your Project → **Evalua
 
 ---
 
+## Additional Resources
+
+Microsoft AI-Red-Teaming-Playground-Labs - [Click Here](https://github.com/microsoft/AI-Red-Teaming-Playground-Labs)
