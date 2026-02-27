@@ -1,6 +1,8 @@
 # 🔴 AI Red Teaming Lab — Attacking a Live n8n AI Chatbot with Azure AI Foundry
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sachin0034-tech/MLAI-community-labs/blob/main/Class-Labs/Lightning%20Lessons%20Labs/Ai%20Red%20Teaming/AI_Red_Teaming_Lab_JeuMatch.ipynb)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sachin0034-tech/MLAI-community-labs/blob/main/Class-Labs/Lightning%20Lessons%20Labs/Ai%20Red%20Teaming/AI_Red_Teaming_Lab_v2.ipynb)
+
 [![Azure AI Foundry](https://img.shields.io/badge/Azure%20AI-Foundry-0078D4?logo=microsoft-azure)](https://ai.azure.com)
 [![n8n](https://img.shields.io/badge/Backend-n8n-EA4B71?logo=n8n)](https://n8n.io)
 
