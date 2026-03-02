@@ -59,17 +59,6 @@ Before beginning this lab, ensure you have completed the following:
 
 ---
 
-# > **💡 Note:** You have two options:
-> 
-> 1. **Build it From Scratch:** **[Click Here](https://maven.com/mahesh-yadav/genaipm/7/syllabus/modules/e4d850?item=631eb82b63738807)**
-
-### OR 
-
-
-> 2. **Use the provided workflow file** from the Prerequisites section above and follow the **Hands-On: Building Your RAG System** instructions below.
-
----
-
 ## Hands-On: Building Your RAG System
 
 ### Step 1: Set Up Your n8n Account
