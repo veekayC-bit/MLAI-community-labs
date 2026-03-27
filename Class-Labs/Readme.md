@@ -28,7 +28,7 @@ Welcome to the **MLAI Community Class Labs** repository! Below you'll find all a
 | 18 | **How to Setup OpenClaw on AWS** | Step-by-step guide to deploying and configuring OpenClaw on Amazon Web Services (AWS) as the foundational infrastructure setup. | [![Click Here](https://img.shields.io/badge/Click%20Here-2ea44f?style=for-the-badge)](https://playful-blinker-866.notion.site/Lesson-0-3-How-to-Setup-OpenClaw-on-AWS-32d56510f2bd8191a8faed2f863f72c5) |
 | 19 | **Configuring Google Cloud Console for Gmail & Calendar** | Configure Google Cloud Console to enable OpenClaw's integration with Gmail and Google Calendar for automated email and scheduling workflows. | [![Click Here](https://img.shields.io/badge/Click%20Here-2ea44f?style=for-the-badge)](https://playful-blinker-866.notion.site/Lesson-1-0-Configuring-Google-Cloud-Console-for-Gmail-Google-Calendar-32956510f2bd81e9aaaef922beb0c838) |
 | 20 | **LLM as a Judge** | Implement LLM-based evaluation techniques to automatically assess the quality of AI-generated outputs using predefined metrics, demonstrated through contract analysis use cases. | [![Click Here](https://img.shields.io/badge/Click%20Here-2ea44f?style=for-the-badge)](https://github.com/sachin0034-tech/MLAI-community-labs/tree/main/Class-Labs/Cohort%207/Module%204/Lab-1(LLM_as_judge)) |
->>>>>>> ad24a6a76b752d87f4c2161c30eb9ed2ddf838b1
+
 
 ---
 
