@@ -169,4 +169,4 @@ Stakeholder feedback → one more iteration → eng handoff
 
 ---
 
-*Next: Lesson 3.2 — CoWork: Creating a Job Assistant and Understanding Connectors*
+*Next: [Lesson 3.2 — CoWork: Creating a Job Assistant and Understanding Connectors](./Lesson3.2-CoWork:%20Creating-a-Job-Assistant-and-Understanding-Connectors.md)*

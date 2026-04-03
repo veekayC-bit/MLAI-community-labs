@@ -1,4 +1,4 @@
-# Lesson 3.3 — Skills and Hooks In Claude Codecha: Automating Your PM Workflow
+# Lesson 3.3 — Skills and Hooks In Claude Code: Automating Your PM Workflow
 
 ---
 

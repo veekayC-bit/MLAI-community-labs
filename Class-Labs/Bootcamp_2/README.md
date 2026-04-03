@@ -25,8 +25,7 @@ Before you can use Claude Code effectively, you need to understand how it loads 
 |--------|-------|
 | [1.0 — Installation](./Module-1%20-%20ClaudeFoundation/Lesson1.0%20-%20Installation.md) | Install Claude Code and set up your environment |
 | [1.1 — Download the Project Repository](./Module-1%20-%20ClaudeFoundation/Lesson1.1-understand-the-interface.md) | Download the bootcamp workspace — the folder where all your outputs will live |
-| [1.2 — Understanding Context](./Module-1%20-%20ClaudeFoundation/Lesson1.2-Understanding-Context.md) | How Claude uses context and why it matters for every prompt you run |
-| [1.3 — CLAUDE.md: Your PM Brain](./Module-1%20-%20ClaudeFoundation/Lesson1.3-CLAUDE.md-your_PM_brain.md) | Build your global working style file and your project company context file |
+| [1.2 — CLAUDE.md: Your PM Brain](./Module-1%20-%20ClaudeFoundation/Lesson1.2-CLAUDE.md-your_PM_brain.md) | Build your global working style file and your project company context file |
 
 **What you'll have:** Claude Code installed, your workspace set up, and CLAUDE.md loaded with your PM working style and LegalGraph company context — so every future session starts with Claude already briefed.
 
@@ -44,21 +43,22 @@ This module is where Claude Code becomes a real PM tool. You build three reusabl
 | [2.3 — Market Research](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.3-Chaining-Research-Prompts.md) | Chain 4 research stages on Lease Compliance — market size, competitors, customer pain points, full synthesis |
 | [2.4 — User Research](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.4-User-Research-Chaining.md) | Chain user research using the market research as context — personas, workflow, ranked pain points |
 | [2.5 — PRD](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.5-PRD.md) | Turn both research outputs into a structured PRD — requirements, success metrics, open questions |
+| [2.6 — Army of Agents](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.6-Army-of-Agents.md) | Orchestrate multiple specialist agents in parallel for a board-ready competitive intelligence sprint |
 
-**What you'll have:** Three slash commands in your personal library. Three output files saved in `outputs/`. CLAUDE.md updated with market intelligence, user insights, and PRD decisions — loading automatically every session.
+**What you'll have:** Four slash commands in your personal library. Four output files saved in `outputs/`. CLAUDE.md updated with market intelligence, user insights, PRD decisions, and competitive context — loading automatically every session.
 
 ---
 
-### [Module 3 — Prototype, Connector & Automate](./Module-3%20-%20Prototype%2C%20Connect%20%26%20Automate/README.md)
+### [Module 3 — Prototype, Connector & Automate](./Module-3%20-%20Prototype%2C%20Connector%20%26%20Automate/README.md)
 **Turn your PRD into a prototype, connect Claude to your tools, and automate your PM workflow**
 
 Module 3 picks up directly from the PRD you built in Module 2. You generate a clickable prototype from it, connect Claude to external tools like Notion and Jira via MCP connectors, and set up skills and hooks that automate quality checks and recurring PM tasks — without you having to remember to run them.
 
 | Lesson | Topic |
 |--------|-------|
-| [3.1 — Creating Mocks and Deploying](./Module-3%20-%20Prototype%2C%20Connect%20%26%20Automate/Lesson3.1-Creating-Mocks-and-Deploying.md) | Generate a clickable HTML prototype from your PRD and deploy it via Tiiny.host in 30 seconds |
-| [3.2 — CoWork: Job Assistants and Connectors](./Module-3%20-%20Prototype%2C%20Connect%20%26%20Automate/Lesson3.2-CoWork:%20Creating-a-Job-Assistant-and-Understanding-Connectors.md) | Build `/standup` and `/competitive-intel` job assistants, connect Claude to Notion via MCP |
-| [3.3 — Skills and Hooks](./Module-3%20-%20Prototype%2C%20Connect%20%26%20Automate/Lesson3.3-Skills-and-Hooks.md) | Create reusable PM skills for automatic PRD review, and hooks that run without prompting |
+| [3.1 — Creating Mocks and Deploying](./Module-3%20-%20Prototype%2C%20Connector%20%26%20Automate/Lesson3.1-Creating-Mocks-and-Deploying.md) | Generate a clickable HTML prototype from your PRD and deploy it via Tiiny.host in 30 seconds |
+| [3.2 — CoWork: Job Assistants and Connectors](./Module-3%20-%20Prototype%2C%20Connector%20%26%20Automate/Lesson3.2-CoWork:%20Creating-a-Job-Assistant-and-Understanding-Connectors.md) | Build `/standup` and `/competitive-intel` job assistants, connect Claude to Notion via MCP |
+| [3.3 — Skills and Hooks](./Module-3%20-%20Prototype%2C%20Connector%20%26%20Automate/Lesson3.3-Skills-and-Hooks.md) | Create reusable PM skills for automatic PRD review, and hooks that run without prompting |
 
 **What you'll have:** A deployed clickable prototype. Job assistants that handle recurring PM tasks. A Notion connector that saves research outputs directly to your workspace. Skills and hooks that enforce quality standards automatically.
 

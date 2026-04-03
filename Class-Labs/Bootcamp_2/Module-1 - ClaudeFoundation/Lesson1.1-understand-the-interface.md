@@ -109,4 +109,4 @@ This is why the setup matters: every lesson from 2.3 onward uses `@company-conte
 
 ---
 
-*Next: [Lesson 1.2 — Understanding Context](./Lesson1.2-Understanding-Context.md)*
+*Next: [Lesson 1.2 — CLAUDE.md: Your PM Brain](./Lesson1.2-CLAUDE.md-your_PM_brain.md)*

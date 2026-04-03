@@ -1,4 +1,4 @@
-# Module 3 — Prototype, Connect & Automate
+# Module 3 — Prototype, Connector & Automate
 
 Turn your PRD into a clickable prototype, connect Claude to your external tools, and automate your PM workflow with skills and hooks.
 

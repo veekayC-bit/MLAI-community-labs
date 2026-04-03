@@ -243,19 +243,4 @@ Step 5: @final PRD + @CLAUDE.md → append decisions → loads every session
 
 ---
 
-## Module 2 Complete
-
-You've built a full PM research-to-PRD workflow on top of Claude Code.
-
-**What you've shipped across Module 2:**
-- `/market-research`, `/user-research`, `/prd` — reusable commands in your personal library
-- `outputs/market-research-lease-compliance-<date>.md` — decision-ready market research
-- `outputs/user-research-lease-compliance-<date>.md` — grounded user research with ranked pain points
-- `outputs/prd-lease-compliance-<date>.md` — a structured PRD ready for GC review
-- An updated `./CLAUDE.md` with market intelligence, user research intelligence, and PRD decisions — all loading automatically every session
-
-Every session from here starts with everything you've learned already loaded.
-
----
-
-*Next: [Lesson 3.1 — Creating Mocks and Deploying](../Module-3%20-%20Prototype%2C%20Connect%20%26%20Automate/Lesson3.1-Creating-Mocks-and-Deploying.md)*
+*Next: [Lesson 2.6 — Building an Army of Agents](./Lesson2.6-Army-of-Agents.md)*

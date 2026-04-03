@@ -1,4 +1,4 @@
-# Lesson 1.3 — Persistent Context in Claude Code: Building CLAUDE.md as a PM
+# Lesson 1.2 — Persistent Context in Claude Code: Building CLAUDE.md as a PM
 
 ![images](./images/claudecontext.png)
 
@@ -6,8 +6,8 @@
 
 ## Prerequisites
 
-- Complete Module 0 and Lessons 1.1 and 1.2 before starting this lesson
-- You'll need your company's context files for this lesson (`company-overview.md`, `product-description.md`, `user-personas.md`, `competitive-landscape.md`). If you don't have your own company, download the sample company files we're using in this lab and use those instead: **[Download Sample Company Files](./sample-company/)**
+- Complete Lesson 1.1 before starting this lesson
+- You'll need your company's context files for this lesson (`company-overview.md`, `product-description.md`, `user-personas.md`, `competitive-landscape.md`). If you don't have your own company, download the sample company files we're using in this lab and use those instead: **[Download Sample Company Files](https://github.com/sachin0034-tech/aipminterview-bootcamp-project-repo)**
 
 ---
 
