@@ -220,15 +220,13 @@ Step 5: @final report + @CLAUDE.md → append intelligence → loads every sessi
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Verify `/user-research` command exists: `ls ~/.claude/commands/`
-2. Run Stage 1 — read the output before moving on
-3. Run Stage 2 — use `/compact` afterward if the session is long
-4. Run Stage 3 — get the ranked pain point list
-5. Run Stage 4 — verify the file saves to `outputs/user-research-lease-compliance-<date>.md`
-6. Run Step 5 — update CLAUDE.md with user research intelligence
-7. Open a new session — ask Claude who the primary user is for the Lease Compliance feature and what their biggest pain point is. Verify it gives a specific, grounded answer.
+- **User research chaining uses the same pattern as market research** — four stages, each deepening the previous: baseline persona → workflow deep-dive → ranked pain points → full synthesis. The chain structure is reusable across any research type.
+- **How market research context feeds user research** — Stage 1 loads the Lesson 2.3 output via `@` to ground the user research in the competitive and market reality you already established. Research compounds when outputs chain.
+- **Jobs to Be Done as a PM framework** — functional job (what the user is trying to accomplish), emotional job (how they want to feel), social job (how they want to be seen). Claude applies this framework when you use the `/user-research` command.
+- **Pain point prioritization produces PRD inputs** — Stage 3 ranks pain points by frequency and severity. This ranking directly informs the P0/P1/P2 requirements in the PRD you'll build in Lesson 2.5.
+- **CLAUDE.md as a compounding research layer** — each lesson that updates CLAUDE.md adds a new intelligence layer. By now, Claude knows your market, your competitors, your users, and their pain points — all loading silently at the start of every session.
 
 ---
 

@@ -157,15 +157,13 @@ Stakeholder feedback → one more iteration → eng handoff
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Run the generation prompt — verify `mocks/lease-compliance-prototype.html` is created
-2. Open locally — click through all three screens
-3. Run the validation prompt — close the loop with user research
-4. Fix any gaps Claude identifies
-5. Deploy to GitHub Pages
-6. Share the link with your GC — get one round of async feedback
-7. Make one final iteration based on feedback
+- **A PRD is the complete spec for a prototype** — Claude generates the mock directly from your `prd-lease-compliance.md`. Every screen, flow, and interaction traces back to a requirement. No blank-page design work needed.
+- **Validation closes the research loop** — running the validation prompt against your user research output checks whether the prototype actually solves the pain points you identified in Lesson 2.4. It surfaces gaps before a stakeholder sees them.
+- **Mocks get async feedback faster than docs** — sharing a clickable link gets faster, more concrete feedback than sharing a PRD. Stakeholders react to what they can click; they abstract over what they read.
+- **Tiiny.host deploys in one step** — drag the HTML file, get a shareable link. No servers, no config. The prototype is live for stakeholder review the moment you deploy it.
+- **The full research → PRD → prototype chain** — the prototype is not an isolated artifact. It is the final output of a chain that started with market research in Lesson 2.3. Every screen reflects a user need you identified and a requirement you wrote.
 
 ---
 

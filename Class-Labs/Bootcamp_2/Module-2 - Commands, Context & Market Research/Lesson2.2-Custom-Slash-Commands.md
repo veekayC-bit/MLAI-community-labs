@@ -1,14 +1,50 @@
-# Lesson 2.2 — Custom Slash Commands: Build Your PM Command Library
+# Lesson 2.2 — Custom Slash Commands: Stop Rewriting Prompts, Start Running Commands
+
+---
+
+## Where You Are
+
+In Lesson 2.1 you learned how built-in slash commands work — `/init`, `/cost`, `/context` — and why typing a command is faster than describing an action. Those are commands Claude Code ships with.
+
+This lesson is about building your own. The same mechanism, but you define the prompt, the output structure, and the behavior. By the end you'll have three commands — `/market-research`, `/user-research`, and `/prd` — that you'll use in every lesson from 2.3 onward.
+
+---
+
+## The Problem This Lesson Solves
+
+Every time you want to run market research in Claude Code, you probably write something like this:
+
+```
+Research the legal AI market. Give me market size, key trends, competitive dynamics,
+implications for us, and open questions. Format it with headers. Save the output as
+a markdown file. Make sure to include a CAGR estimate and a competitor table...
+```
+
+That's 40 words of output structure definition before you even get to the actual research topic. And you write it again next week for a different market. And again the week after.
+
+**Custom slash commands fix this.** You define the output structure once — in a `.md` file. From then on, you just type:
+
+```
+/market-research legal AI contract review platforms
+```
+
+Claude receives the full structure prompt automatically, replaces your topic in the right place, and runs. You never write the output format again.
+
+This is the lesson: **encode your PM workflows once, run them with a single command forever.**
 
 ---
 
 ## What Custom Slash Commands Are
 
-A custom slash command is a `.md` file stored in a specific folder. The filename becomes the command name. The file content becomes the prompt Claude receives when you run it.
+A custom slash command is a `.md` file stored in a specific folder. The filename becomes the command name. The file content becomes the prompt Claude receives when you run it — with `$ARGUMENTS` replaced by whatever you type after the command name.
 
-| File | Command it creates |
-|------|--------------------|
-| `~/.claude/commands/template.md` | `/template` |
+| File | Command | How you run it |
+|------|---------|----------------|
+| `~/.claude/commands/market-research.md` | `/market-research` | `/market-research legal AI platforms` |
+| `~/.claude/commands/user-research.md` | `/user-research` | `/user-research enterprise onboarding` |
+| `~/.claude/commands/prd.md` | `/prd` | `/prd AI-powered contract review` |
+
+The key: `$ARGUMENTS` in the file gets replaced by whatever you type after the command. The rest — output structure, file naming, formatting rules — is fixed and automatic.
 
 ---
 
@@ -23,57 +59,9 @@ A custom slash command is a `.md` file stored in a specific folder. The filename
 
 ## How to Create a Custom Command
 
-### Step 1 — Open your terminal
+### Step 1 — Create the command file using Claude Code Desktop
 
-**Mac**
-- Press `Cmd + Space`, type **Terminal**, press Enter
-- Or open **iTerm2** if you have it installed
-
-**Windows**
-- Press `Win + R`, type **cmd**, press Enter
-- Or search for **PowerShell** in the Start menu and open it
-
-![images](./images/terminal.png)
-
----
-
-### Step 2 — Create the folder
-
-Run this command:
-
-**Mac**
-```bash
-mkdir -p ~/.claude/commands
-```
-
-![alt text](./images/terminalone.png)
-
-**Windows (PowerShell)**
-```powershell
-New-Item -ItemType Directory -Force -Path "$HOME\.claude\commands"
-```
-
-**Confirm it worked:**
-
-**Mac**
-```bash
-ls ~/.claude/commands
-```
-> No output is fine — it just means the folder is empty. No error = success.
-
-**Windows (PowerShell)**
-```powershell
-dir "$HOME\.claude\commands"
-```
-> You should see an empty directory listing with no errors.
-
----
-
-### Step 3 — Write the prompt inside the file using Claude Code Desktop
-
-Instead of manually writing the file, let Claude Code do it for you.
-
-**Open Claude Code Desktop** and paste this exact prompt:
+You don't write the file manually. Paste this into Claude Code Desktop and let it create the command for you:
 
 ```
 Create the file ~/.claude/commands/market-research.md with the following content:
@@ -118,7 +106,6 @@ Structure the output EXACTLY as follows:
 After completing the research, save the full report as a markdown file in the current working directory with the filename: market-research-<topic-slug>-<YYYY-MM-DD>.md
 ```
 
-
 ![images](./images/chatone.png)
 
 Claude Code will create the file automatically. No manual editing needed.
@@ -129,13 +116,29 @@ Claude Code will create the file automatically. No manual editing needed.
 
 ---
 
-### Bonus: Create Templates for User Research and PRD
+### Step 2 — Run the command
 
-Use the same approach to create two more reusable commands.
+![images](./images/testing.png)
+
+```
+/market-research legal AI contract review platforms
+```
+
+Claude receives the full content of `market-research.md` with `$ARGUMENTS` replaced by `legal AI contract review platforms` — and runs the full structured research automatically.
+
+![images](./images/res.png)
+
+Notice what you did NOT type: output format, file naming rules, section headers, open questions instruction. All of that is already in the command. You typed the topic. Claude handled the rest.
 
 ---
 
-**User Research Template** — paste this into Claude Code Desktop:
+## Create Commands for User Research and PRD
+
+Use the same approach to install two more commands you'll use throughout this bootcamp.
+
+---
+
+**User Research Command** — paste into Claude Code Desktop:
 
 ```
 Create the file ~/.claude/commands/user-research.md with the following content:
@@ -185,7 +188,7 @@ Replace spaces with hyphens in the topic slug and use today's date.
 
 ---
 
-**PRD Template** — paste this into Claude Code Desktop:
+**PRD Command** — paste into Claude Code Desktop:
 
 ```
 Create the file ~/.claude/commands/prd.md with the following content:
@@ -240,91 +243,72 @@ Replace spaces with hyphens in the topic slug and use today's date.
 
 ---
 
-Once created, use these commands the same way:
+Once all three are installed, use them like this:
 
 ```
+/market-research legal AI contract review platforms
 /user-research enterprise onboarding drop-off
 /prd AI-powered contract review feature
 ```
 
-### Step 4 — Use it
-
-![images](./images/testing.png)
-
-```
-/market-research legal AI contract review platforms
-
-```
-
-Claude receives the full content of `template.md` with `$ARGUMENTS` replaced by `market-research` — and generates both output files automatically.
-
-![images](./images/res.png)
-
 ---
 
-### What happens behind the scenes
+## What Happens Behind the Scenes
 
 ![images](./images/diagramsystem.png)
 
-**1. You type `/template market-research`**
-Claude Code intercepts `/template` and finds `~/.claude/commands/template.md`.
+**1. You type `/market-research legal AI contract review platforms`**
+Claude Code intercepts `/market-research` and finds `~/.claude/commands/market-research.md`.
 
 **2. `$ARGUMENTS` gets replaced**
-Every instance of `$ARGUMENTS` in the file is replaced with `market-research`. The file becomes a fully resolved prompt.
+Every instance of `$ARGUMENTS` in the file is replaced with `legal AI contract review platforms`. The file becomes a fully resolved prompt — your topic dropped into a complete structure.
 
 **3. Your CLAUDE.md is already loaded**
-Every session starts by loading your CLAUDE.md. By the time you run any command, Claude already knows your company, personas, metrics, and working style. The command doesn't need to explain any of that.
+Every session starts by loading your CLAUDE.md. By the time you run any command, Claude already knows your company, personas, metrics, and working style. The command output is automatically grounded in your context — no extra briefing needed.
 
-**4. Claude creates both files in one shot**
-- `templates/market-research-format.md` — the output structure Claude follows
-- `sampleprompts/market-research-prompt.md` — the research standards Claude applies
-
-One command. Two files. Full scaffolding for any type of work.
-
-
-## Example: Running `/template market-research`
-
-When you type `/template market-research`, Claude:
-
-1. Reads `~/.claude/commands/template.md`
-2. Replaces `$ARGUMENTS` with `market-research` throughout
-3. Creates `templates/market-research-format.md` — the structure every future research report follows
-4. Creates `sampleprompts/market-research-prompt.md` — the standards Claude applies every time it runs research
-
-You review both files, edit anything that doesn't match your stakeholders, and you're done. No manual prompting. No blank-page scaffolding.
-
----
-
-## Why One General Command
-
-The same `/template` command works across every future module:
-
-| What you type | What gets created |
-|---------------|-------------------|
-| `/template market-research` | market research template + prompt |
-| `/template user-research` | user research template + prompt |
-| `/template prd` | PRD template + prompt |
-| `/template competitive-analysis` | competitive analysis template + prompt |
-
-You build the command once. You reuse it for every type of PM work.
+**4. Output is saved automatically**
+The command instructs Claude to save the result as a dated markdown file. No copy-paste, no manual saving. The file lands in your workspace, ready to `@` reference in the next prompt.
 
 ---
 
 ## Things to Keep in Mind
 
-- **`$ARGUMENTS` is optional.** Commands with no variable run the same way every time — useful for recurring workflows like a weekly review.
-- **You can use `@` inside command files.** When a research command references `@templates/...` and `@sampleprompts/...`, those files load automatically every time the command runs.
+- **`$ARGUMENTS` is optional.** Commands with no variable run the same way every time — useful for recurring workflows like a weekly standup summary or sprint retrospective.
+- **You can use `@` inside command files.** If a command references `@company-context/competitive-landscape.md`, that file loads automatically every time the command runs. Your commands can carry context built into them.
 - **Filenames are case-sensitive on Mac and Linux.** Keep all command filenames lowercase with hyphens: `market-research`, not `MarketResearch`.
+- **Commands are just files.** Edit them any time by opening the `.md` file and changing the prompt. No reinstall, no config update needed.
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Run: `mkdir -p ~/.claude/commands`
-2. Create `~/.claude/commands/template.md` with the content above
-3. Verify the file exists: `ls ~/.claude/commands/`
+### The Core Insight
+> When you do research in Claude Code, you should never be writing output structure in your prompt. That belongs in a command file — defined once, applied every time. Your prompt should contain only the topic.
 
-You'll use this command in Lesson 2.3 to generate your market research scaffolding in one step.
+### Key Concepts
+
+**Custom slash commands are just `.md` files**
+The filename becomes the command name. The file content becomes the prompt. There is no syntax to learn, no config to edit — just a markdown file in the right folder.
+
+**`$ARGUMENTS` is what makes commands flexible**
+Whatever you type after the command name gets substituted into every `$ARGUMENTS` placeholder in the file. One command, infinite topics. The structure stays fixed; only the subject changes.
+
+**Two storage locations, two use cases**
+- `~/.claude/commands/` — global, personal, available in every project and session
+- `./.claude/commands/` — project-scoped, committable to git, shared with your team
+
+**Commands and CLAUDE.md work as a system**
+Commands encode *how* to structure output. CLAUDE.md encodes *who you are* and *what your company is*. Every time a command runs, both are active — the output is automatically structured AND grounded in your specific product, personas, and market context. You don't have to brief Claude before each run.
+
+**You built three PM commands**
+- `/market-research [topic]` — full structured market research, saved as a dated file
+- `/user-research [topic]` — structured user research with JTBD, findings, and product implications
+- `/prd [feature]` — full PRD with requirements, metrics, and open questions
+
+Each one encodes what used to be 30–50 words of prompt boilerplate into a single command you never have to think about again.
+
+**Commands are just files — edit them any time**
+No reinstall. No config refresh. Open the `.md` file, change the prompt, save. The next time you run the command, it uses the updated version.
 
 ---
 

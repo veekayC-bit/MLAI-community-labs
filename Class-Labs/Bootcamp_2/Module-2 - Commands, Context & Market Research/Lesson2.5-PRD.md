@@ -230,17 +230,14 @@ Step 5: @final PRD + @CLAUDE.md → append decisions → loads every session
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Verify `/prd` command exists: `ls ~/.claude/commands/`
-2. Verify both research output files exist in `outputs/`
-3. Run Stage 1 — read the PRD draft before moving on
-4. Run Stage 2 — stress-test requirements against user research
-5. Run Stage 3 — surface edge cases and pre-build open questions
-6. Run Stage 4 — verify the final PRD saves to `outputs/prd-lease-compliance-<date>.md`
-7. Run Step 5 — update CLAUDE.md with PRD intelligence
-8. Share the PRD with your GC — ask: "Would you approve this for scoping?"
+- **A PRD built on chained research is grounded by default** — because Stages 2.3 and 2.4 outputs load as context, every requirement in this PRD traces back to a market signal or a user pain point. You're not writing requirements from intuition.
+- **The four-stage PRD structure** — Stage 1: baseline draft from the `/prd` command. Stage 2: stress-test requirements against user research (what do real users need vs. what did we assume?). Stage 3: edge cases and open questions before build. Stage 4: final clean PRD ready for stakeholder review.
+- **Requirements stress-testing is its own stage** — comparing the draft PRD against user research at Stage 2 surfaces requirements that look right but don't match what users actually do. Catching that before build is the point.
+- **Open questions belong in the PRD** — surfacing unresolved decisions before scoping begins gives engineers and stakeholders a chance to resolve them, not discover them mid-sprint.
+- **CLAUDE.md now carries the full research-to-PRD chain** — market intelligence, user insights, and PRD decisions all load in every session. From this point forward, Claude has the context to help you make decisions on this feature without re-briefing.
 
 ---
 
-*Next: [Lesson 2.6 — Building an Army of Agents](./Lesson2.6-Army-of-Agents.md)*
+*Next: [Lesson 2.6 — Connectors in Claude Cowork](./Lesson2.6-Connectors-in-Claude-Cowork.md)*

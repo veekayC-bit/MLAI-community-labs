@@ -298,15 +298,13 @@ Rules:
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Verify `/market-research` command exists: `ls ~/.claude/commands/`
-2. Run Stage 1 — read the output before moving on
-3. Run Stage 2 — use `/compact` afterward if the session is long
-4. Run Stage 3 — identify the primary buyer persona
-5. Run Stage 4 — verify the file saves to your working directory
-6. Run Step 5 — update CLAUDE.md with market intelligence
-7. Open a new session and ask Claude what it knows about the lease compliance market — verify it gives specific, grounded answers
+- **What prompt chaining is** — breaking a complex research task into sequential stages where each output becomes input for the next. Each stage deepens the analysis rather than repeating it.
+- **Why chaining beats a single prompt** — a single prompt produces surface-level output. Chaining forces Claude to deepen at each stage: baseline → competitors → customer segments → full synthesis. The final output is 4x richer than anything a single prompt produces.
+- **The four-stage market research structure** — Stage 1: baseline market size and trends. Stage 2: competitive landscape deep-dive. Stage 3: customer segments and pain points. Stage 4: full synthesis with strategic implications.
+- **When to use `/compact`** — after a long research stage when the context window is filling up. Compressing history keeps Claude focused on the task without losing the thread.
+- **Why CLAUDE.md gets updated at the end** — market intelligence is only useful if it loads in every future session. Updating CLAUDE.md after research means every future prompt on this feature starts with that intelligence already loaded.
 
 ---
 

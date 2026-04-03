@@ -75,4 +75,4 @@ After signing in (Mac or Windows):
 
 You’ve installed the app, signed in, and opened Claude Code. In the next lessons you’ll use this workspace to run product management workflows with Claude.
 
-*Next: [Lesson 1.1 — Understanding the Interface](./Lesson1.1-understand-the-interface.md)*
+*Next: [Lesson 1.1 — Building Your First Claude Code Skill: The Company Context Builder](./Lesson1.1-Company-Context-Builder.md)*

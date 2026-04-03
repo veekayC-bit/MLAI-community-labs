@@ -307,13 +307,13 @@ Claude continues
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Create the PRD Reviewer skill — test it against your Lesson 2.5 PRD
-2. Create the Research Quality Checker skill — test it against your Lesson 2.3 market research
-3. Add the auto-backup hook — save a file to `outputs/` and verify the backup appears
-4. Add the PRD changelog hook — edit your PRD and verify `CHANGELOG.md` updates
-5. Add the session logger hook — open a new session and check `~/.claude/session-history.txt`
+- **Skills vs. hooks vs. commands — when to use each** — commands run when you type them; skills trigger on natural language phrases and run adaptive, multi-step logic; hooks run automatically in response to events (file saved, session started) without any trigger from you. Each fills a different gap.
+- **Skills enforce quality standards** — the PRD Reviewer and Research Quality Checker skills act as automatic quality gates. They run the same review criteria every time, on any PRD or research file, without you having to remember to check.
+- **Hooks automate what you'd otherwise forget** — the auto-backup hook saves versions silently; the PRD changelog hook logs every edit; the session logger records every session. These are housekeeping tasks that matter when something goes wrong, and skills ensure they happen.
+- **The session greeter hook eliminates cold-start prompting** — instead of re-briefing Claude at the start of every session, the hook fires automatically and loads your standing context. Every session starts warm.
+- **Your PM workflow is now a system** — CLAUDE.md loads context, commands run research, skills review output, hooks log and protect your work. You assembled this piece by piece across three modules. It runs without you thinking about it.
 
 ---
 

@@ -13,7 +13,7 @@ Build a reusable PM command library and run a full research-to-PRD workflow — 
 | 2.3 | [Market Research — Chaining Prompts](./Lesson2.3-Chaining-Research-Prompts.md) | Chain 4 research stages on the Lease Compliance feature, update CLAUDE.md |
 | 2.4 | [User Research — Chaining Prompts](./Lesson2.4-User-Research-Chaining.md) | Chain user research on the same feature using market research as context |
 | 2.5 | [PRD](./Lesson2.5-PRD.md) | Turn both research outputs into a structured PRD, update CLAUDE.md |
-| 2.6 | [Building an Army of Agents](./Lesson2.6-Army-of-Agents.md) | Orchestrate multiple specialist agents in parallel for a competitive intelligence sprint |
+| 2.6 | [Connectors in Claude Cowork](./Lesson2.6-Connectors-in-Claude-Cowork.md) | Connect Claude to Slack and other tools so it notifies you when long-running tasks finish |
 
 ---
 
@@ -25,15 +25,17 @@ Every lesson builds on the same feature — Lease Compliance Reporting for Legal
 2.3 → market-research-lease-compliance-<date>.md
 2.4 → user-research-lease-compliance-<date>.md  (uses 2.3 as context)
 2.5 → prd-lease-compliance-<date>.md            (uses 2.3 + 2.4 as context)
+2.6 → Slack connector active — tasks notify you when done
 ```
 
 ---
 
 ## What You'll Have by the End
 
-- Four reusable slash commands in your personal library (`/market-research`, `/user-research`, `/prd`, `/agent-research`)
-- Four research output files saved in `outputs/`
+- Three reusable slash commands in your personal library (`/market-research`, `/user-research`, `/prd`)
+- Three research output files saved in `outputs/`
 - CLAUDE.md updated with market intelligence, user research, PRD decisions, and competitive context
+- Slack connector configured — Claude notifies you when any long-running task completes
 
 ---
 

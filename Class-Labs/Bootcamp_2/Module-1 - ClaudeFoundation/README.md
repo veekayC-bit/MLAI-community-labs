@@ -9,8 +9,9 @@ Get Claude Code set up and understand how it thinks — context, memory, and the
 | # | Lesson | What You'll Do |
 |---|--------|---------------|
 | 1.0 | [Installation](./Lesson1.0%20-%20Installation.md) | Install Claude Code and get your environment ready |
-| 1.1 | [Download the Project Repository](./Lesson1.1-understand-the-interface.md) | Download the bootcamp workspace — the folder where all your outputs will live |
-| 1.2 | [CLAUDE.md — Your PM Brain](./Lesson1.2-CLAUDE.md-your_PM_brain.md) | Build your personal CLAUDE.md so Claude knows your company, personas, and working style |
+| 1.1 | [Company Context Builder — Your First Skill](./Lesson1.1-Company-Context-Builder.md) | Build a Claude Code skill that generates your company context files from a website URL |
+| 1.2 | [Download the Project Repository](./Lesson1.2-understand-the-interface.md) | Download the bootcamp workspace — the folder where all your outputs will live |
+| 1.3 | [CLAUDE.md — Your PM Brain](./Lesson1.3-CLAUDE.md-your_PM_brain.md) | Use your context files to build a persistent CLAUDE.md so Claude knows your company every session |
 
 ---
 

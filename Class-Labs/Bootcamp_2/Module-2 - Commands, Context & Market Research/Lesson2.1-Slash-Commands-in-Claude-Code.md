@@ -27,7 +27,7 @@ You used `@` extensively in Module 1. Now you're learning `/`.
 
 ---
 
-## 6 Slash Commands Every PM Should Know
+## 5 Slash Commands Every PM Should Know
 
 ### 1. `/init` — Set Up CLAUDE.md for a New Project
 
@@ -48,69 +48,11 @@ You used `@` extensively in Module 1. Now you're learning `/`.
 ```
 You should see Claude scan your project folder and either create a new `CLAUDE.md` or suggest improvements to an existing one. After it runs, open the file and check what it produced.
 
-
-![images](./images/inint.png)
-
----
-
-### 2. `/memory` — See What Claude Knows About You
-
-**What it does:** Shows you what's currently loaded from your CLAUDE.md files — global (`~/.claude/CLAUDE.md`) and project (`./CLAUDE.md`) — plus any session memory Claude has built up.
-
-**Why it matters:** Before a big research or strategy session, you want to verify that Claude has the right context loaded. If it's working from stale or wrong information, `/memory` tells you before you waste 30 minutes of prompting.
-
-**How to use it:**
-1. Type `/memory` in Claude Code
-2. Claude displays what it has loaded and knows about you
-
-**What to look for:**
-- Are your LegalGraph personas listed? (Jennifer, David, Rachel)
-- Is your PRD template in there?
-- Is the project description accurate?
-
-> **Important:** If you updated CLAUDE.md but changes aren't reflected, use `/memory` to debug. The most common cause: you edited the file but didn't save it.
-
-**Try it:**
-```
-/memory
-```
-You should see a list of all CLAUDE.md files currently loaded, with their contents. Check that your three personas (Jennifer, David, Rachel) are visible and your PRD template is there. If anything is missing, that's your signal to fix the CLAUDE.md before continuing.
-
-![images](./images/memory.png)
+![images](./images/inint%20copy.png)
 
 ---
 
-### 3. `/model` — Switch Models Mid-Session
-
-**What it does:** Shows the currently active Claude model and lets you switch to a different one without starting a new session.
-
-**Why it matters for PMs:** Different tasks need different models. Fast drafting and quick lookups don't need the most powerful model. Deep competitive analysis, PRD writing, or anything where reasoning quality matters — does. `/model` lets you switch on demand, in the same session.
-
-**How to use it:**
-1. Type `/model` to see what's currently active
-2. Select from the available models in the menu that appears
-3. Continue your session — the new model takes over immediately
-
-**When to switch:**
-| Task | Model to use |
-|------|--------------|
-| Quick questions, formatting, summaries | Sonnet (faster, cheaper) |
-| Deep research, PRDs, complex reasoning | Opus (more capable) |
-| High-volume drafting, rapid iteration | Haiku (fastest) |
-
-> **Important:** Switching models mid-session doesn't reset your context. Claude carries over the full conversation history — the new model picks up exactly where the previous one left off.
-
-**Try it:**
-```
-/model
-```
-See which model is active. If you're on Sonnet, try switching to Opus and ask a follow-up question. Notice the difference in reasoning depth on complex questions.
-
-![images](./images/model.png)
-
----
-
-### 4. `/cost` — Track Token Usage and Spend
+### 2. `/cost` — Track Token Usage and Spend
 
 **What it does:** Shows a breakdown of tokens consumed in the current session — input tokens, output tokens, cache usage, and estimated cost.
 
@@ -137,71 +79,110 @@ See which model is active. If you're on Sonnet, try switching to Opus and ask a 
 ```
 Note the token count. Then load a large file with `@` and run `/cost` again — you'll see the input token count jump. That's the cost of loading context.
 
-![images](./images/cost.png)
+![images](./images/cost%20copy.png)
 
 ---
 
-### 5. `/status` — See Your Session and Git State at a Glance
+### 3. `/context` — See and Manage What Claude Is Working With
 
-**What it does:** Displays a snapshot of your current Claude Code session — active model, git branch, working directory, any pending changes, and permission mode.
+**What it does:** Shows you what's currently loaded in Claude's active context window — which files are referenced, how much of the context window is used, and what Claude can currently "see."
 
-**Why it matters for PMs:** Before starting a research or writing session, you want to confirm you're in the right project folder, on the right branch, and using the right model. `/status` surfaces all of that in one line instead of you having to check each thing separately.
+**Why it matters for PMs:** Context window space is finite. If you've been working through a long session and loading multiple files with `@`, Claude's context fills up. When it's full, older parts of the conversation start dropping out — which means Claude may forget earlier instructions or lose track of constraints you gave it upfront. `/context` lets you see that before it becomes a problem.
 
 **How to use it:**
-1. Type `/status` at the start of any session
-2. Claude displays the current session state
+1. Type `/context` at any point in your session
+2. Claude displays what's currently in context — files, messages, and how full the window is
 
-**What to check:**
+**What to look for:**
+- Are all the files you `@` referenced still in context?
+- Is the window getting close to full? If so, consider using `/compact` to compress history
+- Did Claude load the right CLAUDE.md?
 
-| Field | Why you care |
-|-------|--------------|
-| Working directory | Are you in the right project folder? |
-| Git branch | Are you on the right branch before saving outputs? |
-| Active model | Are you using the model you intended? |
-| Pending changes | Any unsaved files that might affect context? |
-| Permission mode | Is Claude allowed to write files, run commands? |
-
-> **Make it a habit:** Run `/status` at the start of every session the same way you'd check your dashboard before a stakeholder meeting. Catch the wrong folder or wrong model before you spend 20 minutes prompting.
+> **Good habit:** Run `/context` before a long generation task — like writing a full PRD or running a market research session. If context is nearly full, compress it first. Generating into a full context window produces lower-quality output.
 
 **Try it:**
 ```
-/status
+/context
 ```
-Verify the working directory matches your LegalGraph project folder and the model matches what you want for this session. If either is wrong, fix it before continuing.
+Check how much of the context window is used. If you've been prompting for a while, you may be surprised how fast it fills.
 
-![images](./images/status.png)
+![images](./images/contextfinal.png)
+
+
 ---
 
-### 6. `/clear` — Start a Fresh Session
+### 4. `/insights` — Surface Patterns Across Your Loaded Context
 
-**What it does:** Wipes the current conversation and starts fresh. Your CLAUDE.md files are unaffected and will load again automatically when the new session starts.
+**What it does:** Analyzes what's loaded in your current context — research files, personas, product docs — and surfaces key patterns, gaps, and strategic observations you may have missed.
 
-**Why it matters:** If a session has gone sideways, you've been debugging a prompt for too long, or you're switching to a completely different task — `/clear` resets without touching your persistent context.
+**Why it matters for PMs:** After you've loaded a batch of files with `@`, it's easy to lose track of the big picture while you're deep in the details. `/insights` steps back and asks: what does all of this add up to? What's consistent across sources? What's contradictory? What's missing?
 
 **How to use it:**
-1. Type `/clear`
-2. A new session starts — CLAUDE.md loads automatically
+1. Load the context files you want analyzed using `@`
+2. Type `/insights`
+3. Claude synthesizes across everything loaded and returns a structured observations summary
 
-**`/clear` vs `/compact` — which to use:**
+**What you get back:**
+- Key patterns across the loaded documents
+- Tensions or contradictions worth investigating
+- Gaps — things that should be in your context but aren't
+- One or two sharp strategic questions the data raises
 
-| Situation | Use |
-|-----------|-----|
-| Session is long but on track, want to keep going | `/compact` |
-| Session has gone off track, want a clean break | `/clear` |
-| Starting a completely different task | `/clear` |
-| Running out of context during research | `/compact` |
+> **Best used after:** loading research outputs, competitor files, or a batch of user interview notes. Before a strategy session or before writing a PRD, run `/insights` to orient yourself.
 
 **Try it:**
 ```
-/clear
+@company-context/competitive-landscape.md
+@company-context/user-persona.md
+/insights
 ```
-After the session resets, immediately ask:
-```
-What do you know about LegalGraph?
-```
-Claude should answer with the company context from your CLAUDE.md — proving that `/clear` wiped the conversation but kept your persistent context intact.
+Claude should return observations about how the competitive landscape maps to your persona's pain points — and flag any gaps between what competitors offer and what your persona actually needs.
 
-![images](./images/clear.png)
+![images](./images/insight.png)
+
+---
+
+### 5. `/schedule` — Turn a Goal into an Ordered Work Plan
+
+**What it does:** Takes a goal or deliverable you describe and breaks it into a sequenced, time-aware work plan — with specific Claude Code steps, file outputs, and prompts to run at each stage.
+
+**Why it matters for PMs:** PMs often know *what* they need to produce but not the exact sequence of steps to get there efficiently in Claude Code. `/schedule` maps out the workflow: what to do first, what depends on what, and what to skip. It's a session planner built for Claude Code's toolset.
+
+**How to use it:**
+1. Type `/schedule` followed by your goal
+2. Claude returns a step-by-step plan with commands, `@` file references, and slash commands at each stage
+
+**Example:**
+```
+/schedule I need to deliver a competitive analysis and a draft PRD for LegalGraph's new document automation feature by end of week
+```
+
+Claude returns something like:
+```
+Day 1 — Research
+  /init → verify CLAUDE.md is current
+  @company-context/competitive-landscape.md + /market-research → run competitive scan
+  Save output to outputs/competitive-scan.md
+
+Day 2 — Synthesis
+  @outputs/competitive-scan.md + @company-context/user-persona.md
+  /insights → surface key gaps
+  Draft positioning statement
+
+Day 3 — PRD
+  @outputs/competitive-scan.md + @company-context/product-description.md
+  /prd → generate first draft
+  Review and correct
+```
+
+> **Use this at the start of a project sprint**, not mid-session. It's most useful when you have a clear deliverable and want Claude Code to map the efficient path to it.
+
+**Try it:**
+```
+/schedule I need to run market research and write a one-pager for a new feature for LegalGraph
+```
+
+![images](./images/schedule.png)
 
 ---
 
@@ -209,21 +190,22 @@ Claude should answer with the company context from your CLAUDE.md — proving th
 
 ![images](./images/diagram.png)
 
-The 6 commands above are the ones you'll use most. Here's the complete set worth knowing:
+The 5 commands above are the ones you'll use most as a PM. Here's the complete set worth knowing:
 
 | Command | What it does |
 |---------|--------------|
+| `/init` | Scan a new project and auto-generate a CLAUDE.md for it |
+| `/cost` | Show tokens used and estimated cost for this session |
+| `/context` | See what's currently loaded in Claude's context window |
+| `/insights` | Surface patterns, gaps, and observations across loaded context files |
+| `/schedule` | Turn a goal into a sequenced Claude Code work plan |
 | `/help` | List all available commands and what they do |
 | `/clear` | Wipe the conversation history and start fresh |
 | `/compact` | Compress conversation history when context gets long |
-| `/cost` | Show tokens used and estimated cost for this session |
-| `/model` | View or switch the active Claude model (e.g., Sonnet → Opus for harder tasks) |
+| `/model` | View or switch the active Claude model (e.g., Sonnet → Opus) |
 | `/memory` | Open and edit your CLAUDE.md files directly from the chat |
-| `/init` | Scan a new project and auto-generate a CLAUDE.md for it |
 | `/review` | Review your staged git changes before committing |
-| `/pr_comments` | Pull in comments from a GitHub PR and address them in context |
 | `/doctor` | Diagnose Claude Code setup issues — run this if something feels broken |
-| `/bug` | Report a bug directly to Anthropic from the CLI |
 | `/vim` | Toggle vim keybindings for the input prompt |
 
 **Full slash command docs:** [docs.anthropic.com/en/docs/claude-code/slash-commands](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
@@ -236,16 +218,19 @@ The 6 commands above are the ones you'll use most. Here's the complete set worth
 - **You can't undo `/clear`.** It's gone. If there's output you need, save it to a file first.
 - **`/compact` is not the same as `/clear`.** People confuse these. Compact = compress + continue. Clear = start over.
 - **`/init` doesn't overwrite an existing CLAUDE.md** without asking. Safe to run even if a CLAUDE.md already exists.
+- **`/insights` and `/schedule` work best with loaded context.** Run them after you've `@` referenced the relevant files — not on an empty session.
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Open Claude Code in your LegalGraph project folder
-2. Type `/memory` — verify your CLAUDE.md from Lesson 1.3 is loaded correctly
-3. Check: are your three personas (Jennifer, David, Rachel) visible? Is your PRD template there?
-4. If yes — you're ready for Lesson 2.2
-5. If something is missing or wrong — go back to Lesson 1.3 and fix the CLAUDE.md before moving on
+- **What slash commands are** — single-keystroke actions that trigger Claude Code behaviors, distinct from `@` file references
+- **`/init`** — generates a CLAUDE.md for any project folder you open, giving you a structured starting point without writing from scratch
+- **`/cost`** — shows real-time token usage and estimated spend so you can manage context load and budget across a session
+- **`/context`** — surfaces what Claude can currently see, how full the context window is, and whether the right files are loaded before you run a long task
+- **`/insights`** — synthesizes patterns, contradictions, and gaps across everything loaded in context; most useful before strategy sessions and PRD writing
+- **`/schedule`** — converts a deliverable goal into a sequenced Claude Code work plan with specific commands and file references at each step
+- **The full command set** — there are a dozen commands worth knowing; the five above are the PM-critical ones
 
 ---
 

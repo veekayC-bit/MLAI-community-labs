@@ -24,10 +24,11 @@ Before you can use Claude Code effectively, you need to understand how it loads 
 | Lesson | Topic |
 |--------|-------|
 | [1.0 — Installation](./Module-1%20-%20ClaudeFoundation/Lesson1.0%20-%20Installation.md) | Install Claude Code and set up your environment |
-| [1.1 — Download the Project Repository](./Module-1%20-%20ClaudeFoundation/Lesson1.1-understand-the-interface.md) | Download the bootcamp workspace — the folder where all your outputs will live |
-| [1.2 — CLAUDE.md: Your PM Brain](./Module-1%20-%20ClaudeFoundation/Lesson1.2-CLAUDE.md-your_PM_brain.md) | Build your global working style file and your project company context file |
+| [1.1 — Company Context Builder: Your First Skill](./Module-1%20-%20ClaudeFoundation/Lesson1.1-Company-Context-Builder.md) | Build a skill that scrapes your website and generates four structured company context files |
+| [1.2 — Download the Project Repository](./Module-1%20-%20ClaudeFoundation/Lesson1.2-understand-the-interface.md) | Download the bootcamp workspace — the folder where all your outputs will live |
+| [1.3 — CLAUDE.md: Your PM Brain](./Module-1%20-%20ClaudeFoundation/Lesson1.3-CLAUDE.md-your_PM_brain.md) | Use your context files to build a persistent CLAUDE.md — loads in every future session |
 
-**What you'll have:** Claude Code installed, your workspace set up, and CLAUDE.md loaded with your PM working style and LegalGraph company context — so every future session starts with Claude already briefed.
+**What you'll have:** Claude Code installed, your workspace set up, a `company-context-builder` skill that auto-generates your company context files from a URL, and CLAUDE.md loaded with your PM working style and company context — so every future session starts with Claude already briefed.
 
 ---
 
@@ -43,9 +44,9 @@ This module is where Claude Code becomes a real PM tool. You build three reusabl
 | [2.3 — Market Research](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.3-Chaining-Research-Prompts.md) | Chain 4 research stages on Lease Compliance — market size, competitors, customer pain points, full synthesis |
 | [2.4 — User Research](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.4-User-Research-Chaining.md) | Chain user research using the market research as context — personas, workflow, ranked pain points |
 | [2.5 — PRD](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.5-PRD.md) | Turn both research outputs into a structured PRD — requirements, success metrics, open questions |
-| [2.6 — Army of Agents](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.6-Army-of-Agents.md) | Orchestrate multiple specialist agents in parallel for a board-ready competitive intelligence sprint |
+| [2.6 — Connectors in Claude Cowork](./Module-2%20-%20Commands%2C%20Context%20%26%20Market%20Research/Lesson2.6-Connectors-in-Claude-Cowork.md) | Connect Claude to Slack and other tools so it notifies you when long-running tasks finish |
 
-**What you'll have:** Four slash commands in your personal library. Four output files saved in `outputs/`. CLAUDE.md updated with market intelligence, user insights, PRD decisions, and competitive context — loading automatically every session.
+**What you'll have:** Three slash commands in your personal library. Three research output files saved in `outputs/`. CLAUDE.md updated with market intelligence, user insights, PRD decisions, and competitive context — loading automatically every session. Slack connector active so Claude closes the loop on every task.
 
 ---
 

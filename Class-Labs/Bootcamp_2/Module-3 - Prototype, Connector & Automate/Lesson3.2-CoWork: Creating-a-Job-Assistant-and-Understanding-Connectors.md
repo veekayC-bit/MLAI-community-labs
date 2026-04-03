@@ -5,6 +5,16 @@
 
 ---
 
+## Where You Are
+
+In Lesson 3.1 you took the PRD you built in Module 2 and turned it into a clickable HTML prototype — deployed and shareable. That closed the loop on the Lease Compliance Reporting feature chain: research → PRD → prototype.
+
+Now you shift context. This lesson introduces **Claude Cowork** — the agentic version of Claude that can operate autonomously across files, the web, and connected tools. You’ll see how Cowork handles multi-step tasks by understanding its context → plan → act → report loop, and you’ll connect it to Slack so it can notify you when work is done.
+
+The patterns you learn here — giving Claude structured context, letting it plan before acting, connecting it to external tools — apply directly back to your PM workflow in Lesson 3.3.
+
+---
+
 Applying for jobs manually is painful: hopping between job portals, redoing filters, and still missing good roles. In this hands-on lab you’ll use **Claude Cowork as your personal job searcher**—automating discovery so you can focus on *choosing where to apply* and *writing strong applications*.
 
 This lesson is structured as a story in three parts: first you'll learn about **context** (giving Claude the right inputs), then **automation** (having Claude find and apply to jobs), and finally **connectors** (getting notified when tasks are done). By the end, you'll have a repeatable pattern you can use for other workflows.
@@ -522,3 +532,5 @@ Cowork is a research preview. Current limitations:
 | **Scheduled tasks require app open** | Scheduled tasks only run while your computer is awake and the Claude Desktop app is open. |
 
 ---
+
+*Next: [Lesson 3.3 — Skills and Hooks](./Lesson3.3-Skills-and-Hooks.md)*

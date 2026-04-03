@@ -1,10 +1,12 @@
-# Lesson 1.1 — Download the Project Repository
+# Lesson 1.2 — Download the Project Repository
 
 ---
 
 ## Where You Are
 
-You've installed Claude Code in Lesson 1.0. Before you go any further, you need to download the project repository — the folder that contains all the company context files you'll use throughout this bootcamp.
+In Lesson 1.0 you installed Claude Code. In Lesson 1.1 you built the `company-context-builder` skill and used it to generate four context files from a company website — company overview, user persona, product description, and competitive landscape.
+
+Now you need a permanent home for those files. This lesson sets up the shared bootcamp workspace — the project folder every future lesson reads from when it `@` references a context file. If you skipped Lesson 1.1 and want to use the pre-built LegalGraph files instead of your own, this is where you download them.
 
 This is a one-time setup. Once it's done, every lesson that asks you to `@` reference a context file will work out of the box.
 
@@ -100,13 +102,13 @@ This is why the setup matters: every lesson from 2.3 onward uses `@company-conte
 
 ---
 
-## Your Action Items
+## What You've Learned
 
-1. Download the ZIP from the repository link above
-2. Extract it to a location you'll remember (Desktop or Documents works well)
-3. Add the folder to Claude Code Desktop
-4. Confirm Claude can see the files — ask it to list the project folder contents
+- **Why the workspace folder matters** — Claude Code can only `@` reference files it can see. Adding your folder once means every future lesson that loads context files works out of the box, with no re-setup.
+- **What's inside the bootcamp repo** — five pre-built context files for LegalGraph (company overview, product description, user personas, competitive landscape, combined context) — the source of truth every future lesson builds on.
+- **How to add a folder to Claude Code** — click `+` in the sidebar, select the folder, confirm with a file-list prompt. One step; persists across sessions.
+- **The difference between this lesson and Lesson 1.1** — Lesson 1.1 builds context files from scratch using a skill. This lesson downloads pre-built files for the bootcamp. Both paths lead to the same place: a context folder Claude can read in every session.
 
 ---
 
-*Next: [Lesson 1.2 — CLAUDE.md: Your PM Brain](./Lesson1.2-CLAUDE.md-your_PM_brain.md)*
+*Next: [Lesson 1.3 — CLAUDE.md: Your PM Brain](./Lesson1.3-CLAUDE.md-your_PM_brain.md)*
