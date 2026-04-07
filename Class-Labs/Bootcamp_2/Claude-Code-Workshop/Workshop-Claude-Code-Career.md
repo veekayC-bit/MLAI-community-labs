@@ -9,7 +9,6 @@
 - [Claude Code Workshop — Build Your Personal AI Career Coach](#claude-code-workshop--build-your-personal-ai-career-coach)
   - [Index](#index)
   - [The Workshop We're Doing Today](#the-workshop-were-doing-today)
-  - [Prerequisites — Before You Start](#prerequisites--before-you-start)
     - [Step 1 — Create a project folder on your machine](#step-1--create-a-project-folder-on-your-machine)
     - [Step 2 — Download the template and add it to your folder](#step-2--download-the-template-and-add-it-to-your-folder)
     - [Step 3 — Add your resume to the folder](#step-3--add-your-resume-to-the-folder)
@@ -56,11 +55,6 @@ By the end, you'll have:
 
 We're going to go step by step. Each section builds on the last. Don't skip ahead.
 
----
-
-## Prerequisites — Before You Start
-
-Before running any prompts, get your environment set up. This takes about 5 minutes.
 
 ---
 
@@ -408,7 +402,7 @@ Paste this into Claude Code. It will create the skill file for you:
 ```
 Strategy Template: @job-strategy.md
 
-Create a skill in file ~/.claude/commands/job-strategy.md with exactly the following content:
+Create a skill name job-strategy-planner:
 
 ## Goal
 This skill helps users generate **personalized job search strategies using the template attached to you**.
@@ -434,11 +428,18 @@ Trigger this skill whenever a user asks about:
   - Constraints (time, location, timeline, etc.)
 - Keep asking questions until you have sufficient context.
 
-## Rules
-- Do NOT perform any evaluation or scoring
-- Do NOT generate generic responses
-- Always prioritize better context before answering
-- Think like a career coach + recruiter
+Output Requirements
+The final output MUST strictly follow the structure and format of the provided template (@job-strategy.md).
+Do NOT deviate from the template format.
+Replace template placeholders with user-specific data only.
+After generating the strategy, save the final output to a file (e.g., job-strategy.md).
+
+Rules
+Do NOT perform any evaluation or scoring
+Do NOT generate generic responses
+Always prioritize better context before answering
+Think like a career coach + recruiter
+
 ```
 
 ---
