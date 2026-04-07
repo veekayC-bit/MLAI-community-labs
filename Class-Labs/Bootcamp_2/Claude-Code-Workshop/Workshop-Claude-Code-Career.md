@@ -435,7 +435,7 @@ Replace template placeholders with user-specific data only.
 After generating the strategy, save the final output to a file (e.g., job-strategy.md).
 
 Rules
-Do NOT perform any evaluation or scoring
+Do NOT perform any evaluation or test case just create a skill
 Do NOT generate generic responses
 Always prioritize better context before answering
 Think like a career coach + recruiter
