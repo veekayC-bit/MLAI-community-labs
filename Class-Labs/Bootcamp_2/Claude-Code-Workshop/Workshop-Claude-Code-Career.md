@@ -379,7 +379,7 @@ A skill is a `.md` file stored in a specific folder. The filename becomes the co
 
 | File | Command | What it does |
 |------|---------|--------------|
-| `~/.claude/commands/job-strategy.md` | `/job-strategy` | Runs your full job strategy workflow |
+| `~/.claude/commands/job-strategy-planner` | `/job-strategy-planner` | Runs your full job strategy workflow |
 | `~/.claude/commands/interview-prep.md` | `/interview-prep` | Preps you for a specific role |
 
 Two storage locations:
@@ -400,7 +400,7 @@ Paste this into Claude Code. It will create the skill file for you:
 ![alt text](./images/6.png)
 
 ```
-Strategy Template: @job-strategy.md
+Strategy Template: @creatingAIJobstartegt.pdf
 
 Create a skill name job-strategy-planner:
 

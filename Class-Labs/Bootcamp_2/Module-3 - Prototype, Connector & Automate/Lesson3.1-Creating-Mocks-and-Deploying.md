@@ -43,8 +43,6 @@ Open Claude Code Desktop in your working project folder and run:
 
 ```
 @company-context.md
-@outputs/market-research-lease-compliance-<date>.md
-@outputs/user-research-lease-compliance-<date>.md
 @outputs/prd-lease-compliance-<date>.md
 
 Read all four files above. Build a clickable HTML prototype for the Lease Compliance Reporting feature.
