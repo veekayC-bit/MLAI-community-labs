@@ -1,6 +1,6 @@
 # PM Dev Tools Workshop
 
-![Claude Launch Command](images/PM%20DEV%20TOOLS%20WORKSHP.png)
+![Claude Launch Command](images/banner.png)
 
 ## What This Workshop Is
 
