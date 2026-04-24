@@ -98,7 +98,7 @@ This keeps the context clean and focused.
 ### Step 3 — Paste the Following Prompt
 
 > [!TIP]
-> **Prompt — Copy and paste this into Claude**
+> **Prompt — Click the copy icon in the top-right corner of the code block below, then paste it directly into Claude.**
 
 ```
 You are a senior Product Manager and PRD expert.
@@ -114,7 +114,7 @@ Your task:
 - Improve and rewrite the PRD so that it fully satisfies every checklist point
 
 Output Instructions:
-- Save the improved version as a new file named: PRD_v2_ai.md
+- Save the improved version as a new file named: PRD_v2_ai.docx
 - Keep the structure clean with proper headings
 ```
 ![image](./images/2.png)
@@ -125,13 +125,26 @@ Let Claude process both files and generate the improved PRD.
 
 ### Step 5 — Save the Output
 
-Save the response as `PRD_v2_ai.md` inside your project folder.
+Save the response as `PRD_AI.docx` inside your project folder.
 
 > [!IMPORTANT]
 > **✅ Checkpoint — What just happened?**
-> Claude read your checklist, applied every rule to your original PRD, and produced a refined version — `PRD_v2_ai.md`. This is now the "AI's best attempt" at your PRD. Your job next is to read it, make your own edits, and save that as `PRD_v3_user.md`. That gap between `v2` and `v3` is where the learning happens. Every change you make is a lesson.
+> Claude used your checklist to generate an improved PRD — `PRD_AI.docx` (its best structured version).
+>
+> **Create a copy of PRD_AI.docx your role is to review, edit, and most importantly leave comments in that file, then save it as `PRD_AI_user.docx`.**
+>
+> **This is where the real magic happens:**
+>
+> - Your edits show **what changed**
+> - Your comments show **what you actually think**
 
-![alt text](./images/3.png)
+---
+> ![alt text](./images/32.png)
+
+---
+
+
+![alt text](./images/31.png)
 
 ---
 
@@ -146,7 +159,7 @@ We do this using a **scheduled task** — a recurring job that runs every hour, 
 ### Prompt
 
 > [!TIP]
-> **Prompt — Copy and paste this into Claude**
+> **Prompt — Click the copy icon in the top-right corner of the code block below, then paste it directly into Claude.**
 
 ```
 Create a scheduled task named `prd-learning-scheduler`.
@@ -155,47 +168,49 @@ This task should run every 1 hour.
 
 On every run, execute the following:
 
-- Read two files from the workspace:
-  1. PRD_v2_ai.md (AI-generated PRD)
-  2. PRD_v3_user.md (User-edited PRD)
+Inputs:
+- PRD_AI.docx
+- PRD_AI_user.docx (with edits + comments)
 
-- Compare both files and identify meaningful differences
+---
 
-- Extract patterns from user changes such as:
-  - Added specificity
-  - Added constraints
-  - Added edge cases
-  - Structural improvements
-  - Clarity or tone improvements
+Task:
 
-- Convert these patterns into structured checklist learnings
+1. Extract user comments from PRD_AI_user.docx
+2. Compare both PRDs:
+   - Additions
+   - Deletions
+   - Modifications
 
-- For each learning, include:
-  - Checklist Item
-  - Section
-  - Observed Change
-  - Frequency (if repeated)
-  - Confidence Score (Low/Medium/High)
-  - Reason (behavioral inference based on user edits)
+3. Detect patterns in:
+   - Writing style (tone, clarity, verbosity)
+   - Product thinking (edge cases, constraints, scenarios)
+   - Structure (sections added/expanded)
+   - Quality (specificity, ambiguity fixes)
 
-- Append all learnings into a SINGLE file:
-  → learned-checklist.md
+4. Score patterns (1–5):
+   - 5 = explicit comment
+   - 4 = repeated edits
+   - Keep only ≥ 4
 
-Important Rules:
-- Do NOT create new files every run
-- Do NOT overwrite the file; always APPEND new learnings
-- Avoid duplicate checklist items (merge if similar)
-- Do NOT include timestamp in the file name
-- Only focus on meaningful changes
-- Learn strictly from user behavior, not assumptions
+5. Convert into checklist rules
+
+---
+
+Output → learner_checklist.md
+
+Format:
+
+# Learned PRD Style & Thinking
+
+## <Category>
+
+### <Rule>
+- Why: <short reason>
+- Evidence: <comment or edit pattern>
 ```
 
-![alt text](./images/4.png)
-
-The Scheduler task is live 
-
-![alt text](./images/6.png)
-
+![alt text](./images/33.png)
 
 
 ### How to Test the Scheduler
@@ -211,9 +226,9 @@ The Scheduler task is live
 > **✅ Checkpoint — What just happened?**
 > You've created an autonomous background process. Every hour, without any manual effort, it wakes up, reads both PRDs, extracts what you changed and why, and appends structured learnings to `learned-checklist.md`. Over time, this file becomes a reflection of how *you* think about PRDs — written in rules the AI can actually use. Notice the confidence scores: the system doesn't just log changes, it infers intent and assigns confidence to each pattern.
 
-![alt text](./images/10.png)
+![alt text](./images/34.png)
 
-![alt text](./images/11.png)
+![alt text](./images/37.png)
 
 ---
 
@@ -229,8 +244,11 @@ This scheduler runs every 15 minutes, filters patterns with `Frequency >= 2`, an
 
 #### Prompt
 
+> [!NOTE]
+> **Before you paste this prompt** — replace `Sachin Parmar` with your own Slack display name, a teammate's name, or a channel name (e.g. `#prd-reviews`). Use whatever destination makes sense for your workflow.
+
 > [!TIP]
-> **Prompt — Copy and paste this into Claude**
+> **Prompt — Click the copy icon in the top-right corner of the code block below, then paste it directly into Claude.**
 
 ```
 Create a scheduled task named `slack-approval-checker`.
@@ -240,8 +258,8 @@ Run every 15 minutes.
 On each run:
 
 STEP 1 — Filter High-Frequency Patterns
-- Read `learned-checklist.md`
-- Extract only the checklist items where Frequency >= 2
+- Read `learner_checklist.md`
+- Extract only the checklist items where score is >= 2
 - If no items meet this threshold, stop — do nothing
 
 STEP 2 — Send for Approval via Slack DM
@@ -254,7 +272,7 @@ STEP 2 — Send for Approval via Slack DM
 
   The following checklist patterns have been observed 2 or more times in your PRD edits and are ready for review:
 
-  [Insert only the filtered items with Frequency >= 2 from learned-checklist.md]
+  [Insert only the filtered items with Frequency >= 2 from learner_checklist.md]
 
   Please reply with ONLY one word:
 
@@ -262,13 +280,37 @@ STEP 2 — Send for Approval via Slack DM
   REJECT → to ignore
 
 STEP 3 — Check for Reply
-- Read the latest reply from Sachin Parmar in the DM thread
 
-- If the reply contains "APPROVE":
-  - Append ONLY the filtered items (Frequency >= 2) to `prd-checklist.md`
+- Fetch messages from the DM conversation with Sachin Parmar
+- Identify the timestamp of the last bot message (approval request)
 
-- If the reply contains "REJECT":
-  - Do nothing
+- From that point onward:
+  - Read ALL messages (not just thread replies)
+
+- Find the latest message sent by Sachin Parmar
+
+- Normalize the reply:
+  - Convert to uppercase
+  - Trim spaces
+
+- If message contains:
+  "APPROVE" → proceed with approval
+  "REJECT" → ignore
+
+- If no valid reply found → stop
+
+STEP 3.1 — Prevent Reprocessing
+
+- Maintain a state file (e.g., slack_state.json)
+
+Store:
+- last_processed_message_ts
+
+Before processing:
+- If latest user reply timestamp == last_processed_message_ts → STOP
+
+After processing:
+- Update last_processed_message_ts
 
 Important:
 - Only process patterns with Frequency >= 2
@@ -278,13 +320,13 @@ Important:
 - Do not repeat the same update if already processed
 ```
 
-![alt text](./images/20.png)
+![alt text](./images/35.png)
 
 ### Step 2 — Add Slack Connector
 
 Now connect Claude to your Slack workspace so the scheduler can send you DMs.
 
-1. Click on **Add Connector**
+1. Click on **Connect**
 2. Search for **Slack**
 3. Authenticate your account and grant permissions
 
@@ -340,6 +382,8 @@ Ensure Claude can:
 - Appends only patterns with `Frequency >= 2` to `prd-checklist.md` ✅
 
 ![alt text](./images/26.png)
+
+![alt text](./images/36.png)
 
 > [!IMPORTANT]
 > **✅ Checkpoint — What just happened?**
