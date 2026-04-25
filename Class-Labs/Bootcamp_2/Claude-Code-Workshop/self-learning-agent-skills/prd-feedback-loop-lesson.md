@@ -1,8 +1,14 @@
 # The PRD Feedback Loop: How to Train AI Using Your Own Edits
 
+
+![image](./images/27.png)
+
 ---
 
-> <span style="color:#6B7280">**A note before you begin:** Most people use AI as a one-shot tool — prompt in, output out. This lesson is different. You are going to build a system that watches how *you* work, learns from your corrections, and gets permanently better over time. By the end, your AI will write PRDs the way *you* would write them — not the way a generic model does. That is the self-learning agent loop. Let's build it.</span>
+## The Problem
+Most AI workflows today are fundamentally static. You provide a prompt, tools like Claude generate a PRD, and then you manually refine it to match your expectations. However, all the valuable edits you make—your clarity improvements, added constraints, structural changes, and product thinking—are lost after that step. The AI does not learn from these corrections, which means it keeps repeating the same mistakes in future outputs. As a result, your unique way of thinking and writing PRDs never becomes part of the system, forcing you to repeatedly "fix" the AI instead of benefiting from it over time.
+
+
 
 ---
 
@@ -41,23 +47,10 @@ This file defines the rules the AI uses to evaluate and improve your PRD. It als
 
 ---
 
-## The Problem: Why Static AI Workflows Fail
-
-Most AI workflows today look like this:
-
-> You write a prompt → AI generates a PRD → You fix it → Forget it ever happened.
-
-<span style="color:#DC2626">**Every edit you make disappears.**</span>
-
-When you rewrite a vague acceptance criterion, restructure a section, or add edge cases the AI missed — that knowledge is never stored. The next time you run the same workflow, the AI makes the same mistakes. You fix them again. The cycle repeats indefinitely.
-
-Your corrections carry your product thinking, your team's standards, and your domain expertise. Right now, all of that is thrown away after every session.
-
-<span style="color:#DC2626">**The AI is not getting smarter. You are just getting more patient.**</span>
-
----
 
 ## The Solution: A Self-Learning PRD Feedback Loop
+
+![image](./images/28.png)
 
 <span style="color:#2563EB">**Core Idea:** Build a closed loop where your edits become structured learning signals that automatically evolve the AI's rules — with your explicit approval before anything changes.</span>
 
