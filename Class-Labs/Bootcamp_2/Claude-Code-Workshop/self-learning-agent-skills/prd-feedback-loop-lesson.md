@@ -222,11 +222,11 @@ Here is exactly what the system did:
 
 ### Your Next Action — This Is the Critical Step
 
-<span style="color:#DC2626">**Open `PRD_reviewed_with_comments.docx`. Read it carefully. Now add your own comments.**</span>
+<span style="color:#DC2626">**Create a copy of PRD_reviewed_with_comments.docx and open the copy and name it   `PRD_reviewed_with_comments_user.docx`. Read it carefully. Now add your own comments.**</span>
 
 This is where you inject your product thinking. As you read through the AI's improved PRD:
 
-- Add a comment wherever you think something is still vague
+- Add a comment wherever you think something is still vague and make changes 
 - Rewrite any section that does not match how your team works
 - Insert edge cases the AI missed
 - Adjust structure to match your organization's standards
@@ -252,12 +252,12 @@ Run every 1 hour. On each run:
 
 STEP 1 — Load Files
 Read the following files from the workspace:
-- PRD_reviewed_with_comments.docx
+- PRD_reviewed_with_comments_user.docx
 - CHECKLIST.md
 
 STEP 2 — Extract User Intent from Comments
-Parse ALL comments from the PRD document.
-For each comment, identify what the user is trying to improve:
+Parse ALL comments from the PRD document and compare PRD_reviewed_with_comments_user.docx with PRD_reviewed_with_comments_ai.docx.
+For each comment in and edits , identify what the user is trying to improve in PRD_reviewed_with_comments_user.docx:
 - Adding missing edge cases → pattern: "User prefers edge case coverage"
 - Rewriting vague text → pattern: "User prefers clarity"
 - Adding structure → pattern: "User prefers structured sections"
