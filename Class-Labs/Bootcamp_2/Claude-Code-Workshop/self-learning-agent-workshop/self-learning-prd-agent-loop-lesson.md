@@ -45,8 +45,8 @@ Generate → Edit → Learn → Improve → Repeat
 ## Prerequisites
 
 - Active Claude Pro Subscription
-- A PRD (Product Requirements Document) — if you don't have one, [download the sample PRD here](https://drive.google.com/file/d/1f3WpI2K1UozwkuATTHx9QQzv_e7S8uOs/view?usp=sharing)
-- PRD Checklist File (`prd-checklist.md`) — [click to download](https://drive.google.com/file/d/1Z72lRsAPtNCzrLUNbZ4TL_p9djHAI0Qh/view?usp=sharing)
+- A PRD (Product Requirements Document) — if you don't have one, [download the sample PRD here](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQC77a2fZILXS4BtU9_i9DRoAbTPlucKPxxTWlK-iABnL2w?e=Y5vUZf)
+- PRD Checklist File (`prd-checklist.md`) — [click to download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQD09xYg-LjFRY478BcFkDs0ASCZMa3zo-xryjSF59qt-ro?e=zFL2i0)
 
 ---
 
