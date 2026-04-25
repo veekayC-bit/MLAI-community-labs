@@ -78,8 +78,8 @@ This is the **self-learning agent loop** — the system gets better at your spec
 ┌──────────────────────────────────────────────────────────────┐
 │                       YOUR WORKSPACE                          │
 │                                                               │
-│  INPUT_PRD_input.docx                                         │
-│  CHECKLIST_PRD_review_checklist_v3.md  ◄─── evolves over time │
+│  PRD_input.docx                                         │
+│  CCHECKLIST.md  ◄─── evolves over time │
 │                           │                                   │
 │                           ▼                                   │
 │             ┌─────────────────────────┐                       │
@@ -107,7 +107,7 @@ This is the **self-learning agent loop** — the system gets better at your spec
 │   └────────────────────────────────────────────────────────┘  │
 │                           │                                   │
 │                           ▼                                   │
-│   CHECKLIST_PRD_review_checklist_v3.md  ◄──── now updated     │
+│   CCHECKLIST.md  ◄──── now updated     │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -172,8 +172,8 @@ After adding it, Claude will have read and write access to that folder. All prom
 ### Step 5 — Run Prompt 1: Generate the Improved PRD
 
 **What to do:** In the Claude Code chat, attach both files you downloaded in the Prerequisites directly in the chat window, then paste and run the prompt below:
-- `INPUT_PRD_input.docx`
-- `CHECKLIST_PRD_review_checklist_v3.md`
+- `PRD_input.docx`
+- `CCHECKLIST.md`
 
 ```
 Based on my PRD and checklist, your task is to:
@@ -222,7 +222,7 @@ Here is exactly what the system did:
 
 ### Your Next Action — This Is the Critical Step
 
-<span style="color:#DC2626">**Open `PRD_reviewed_with_comments.docx`. Read it carefully. Now add your own comments and edits.**</span>
+<span style="color:#DC2626">**Open `PRD_reviewed_with_comments.docx`. Read it carefully. Now add your own comments.**</span>
 
 This is where you inject your product thinking. As you read through the AI's improved PRD:
 
@@ -236,7 +236,7 @@ This is where you inject your product thinking. As you read through the AI's imp
 
 When you are done, save the file. You do not need to rename it — the scheduler in the next step will read it exactly as `PRD_reviewed_with_comments.docx`.
 
-**Why this step is the engine of the entire loop:** The gap between what the AI produced and what you changed is your *learning signal*. Every comment you add, every section you rewrite, every edge case you insert — the system will study all of it in the next phase and turn it into rules. The more deliberate and specific your edits, the better the system learns your standards.
+**Why this step is the engine of the entire loop:** The gap between what the AI produced and what you changed is your *learning signal*. Every comment you add — the system will study all of it in the next phase and turn it into rules. The more deliberate and specific your edits, the better the system learns your standards.
 
 <span style="color:#6B7280">*In a traditional workflow, these edits disappear the moment you close the file. In this loop, they become the AI's training data for every future PRD.*</span>
 
@@ -272,7 +272,7 @@ For each pattern create:
 
 STEP 4 — Match Checklist Style
 Ensure generated checklist items follow the SAME style as
-CHECKLIST_PRD_review_checklist_v3.md:
+CCHECKLIST.md:
 - Clear instruction
 - Actionable
 - Testable
@@ -477,7 +477,7 @@ Every 15 minutes, this job runs through the following sequence:
 
 **4. Your single-word reply controls everything.** Type `APPROVE` or `REJECT` — nothing else. The system handles the rest. No forms, no configuration, no prompt engineering required from you.
 
-**5. On APPROVE:** The new rules are appended to `CHECKLIST_PRD_review_checklist_v3.md` — the same file that powers the PRD generation in Step 6. <span style="color:#16A34A">**The loop is now closed.** The next time you run Prompt 1, Claude will use an improved checklist that reflects your editing standards.</span>
+**5. On APPROVE:** The new rules are appended to `CCHECKLIST.md` — the same file that powers the PRD generation in Step 6. <span style="color:#16A34A">**The loop is now closed.** The next time you run Prompt 1, Claude will use an improved checklist that reflects your editing standards.</span>
 
 **6. On REJECT:** The patterns are discarded from consideration. The checklist stays unchanged. The scheduler will not re-surface these same patterns in future runs.
 
@@ -508,7 +508,7 @@ slack-approval-checker  (runs every 15 minutes)
   ├── Sends you a Slack DM with those patterns
   ├── Waits for your reply
   │
-  ├── APPROVE ──► Appends rules to CHECKLIST_PRD_review_checklist_v3.md
+  ├── APPROVE ──► Appends rules to CCHECKLIST.md
   │                        │
   │                        ▼
   │               NEXT PRD generation uses the improved checklist
