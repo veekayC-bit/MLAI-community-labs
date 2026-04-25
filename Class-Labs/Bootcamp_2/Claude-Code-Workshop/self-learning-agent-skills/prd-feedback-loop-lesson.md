@@ -32,18 +32,17 @@ Complete all four before starting. Do not skip these — the lesson will not wor
 
 **1. Download the PRD Skill**
 This is the skill file you will upload into Claude. It defines how Claude processes and improves your PRD.
-[Download Skill File](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQC8VfiPKDTtTJIz_2ZQcmbeAbkQrLqf9qTlX5trjdwCp6o?e=rYfDdS) *(link will be updated)*
+[Download Skill File](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQC8VfiPKDTtTJIz_2ZQcmbeAbkQrLqf9qTlX5trjdwCp6o?e=rYfDdS)
 
 **2. Claude Pro Subscription**
 Scheduled tasks (the learning and approval schedulers) are a Claude Pro feature. Make sure you are signed into Claude with an active Pro subscription before starting.
 
 **3. Download the Sample PRD**
 This is the raw product requirements document you will feed into the system in Step 6.
-[Download Sample PRD](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQB9ewTdTDo2T74jgfymTUOnAdXk2dwfYVEPHhWvAjtGvkc?e=rSvgqK) *(link will be updated)*
-
+[Download Sample PRD](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQB9ewTdTDo2T74jgfymTUOnAdXk2dwfYVEPHhWvAjtGvkc?e=rSvgqK)
 **4. Download the Checklist**
 This file defines the rules the AI uses to evaluate and improve your PRD. It also evolves over time as the system learns from your edits.
-[Download Checklist](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQD09xYg-LjFRY478BcFkDs0ASCZMa3zo-xryjSF59qt-ro?e=a5KtLt) *(link will be updated)*
+[Download Checklist](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQD09xYg-LjFRY478BcFkDs0ASCZMa3zo-xryjSF59qt-ro?e=a5KtLt)
 
 ---
 
