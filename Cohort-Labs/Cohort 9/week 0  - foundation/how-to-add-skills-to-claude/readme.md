@@ -1,5 +1,7 @@
 # Lesson - How to Add Skills to Claude
 
+![claude](./assets/banner.png)
+
 ## Overview
 
 Skills are one of the most powerful features in Claude. They let you save reusable prompts as slash commands — so instead of typing the same detailed instructions every session, you run one command and get consistent, structured output every time.
