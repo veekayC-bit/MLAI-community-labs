@@ -64,24 +64,31 @@ This node only works inside n8n's own built-in chat. It listens for messages typ
 
 ### Add the Webhook and Respond to Webhook nodes
 
-Here's where the bridge gets built. And this is the right moment to understand what a webhook actually is.
 
-A **webhook** is an address — like a phone number — that your agent publishes to the world. When your web app wants to ask the agent a question, it calls that number. The agent picks up, does its work, and calls back with the answer.
+![flow](./assets/1.jpg)
 
-Right now your agent has no phone number. It only takes calls from inside n8n. Adding a webhook gives it a number that anyone — including your web app — can call.
+
+**What is a Webhook?**
+
+Imagine you're at home and someone comes to your door to deliver a package. They don't just walk in — they ring the doorbell. That ring is the signal: "Someone is here. They have something for you." You go to the door, take the package, and send them on their way.
+
+A webhook works exactly like that doorbell.
+
+Your agent needs a way for the outside world to reach it. A **webhook** is a URL — a specific address on the internet — that your agent publishes and listens to. When your web app wants to send a contract and ask a question, it calls that address. The agent wakes up, receives what was sent, does its thinking, and sends the answer back.
+
+
+The two nodes always work as a pair:
+
+| Node | What it does |
+|---|---|
+| **Webhook** | The doorbell — or the phone. Receives the contract and question from your web app. |
+| **Respond to Webhook** | The reply. Sends the agent's answer back to your web app. |
 
 Click the **(+)** button on the canvas, search for **"Webhook"**, and add it to the canvas. Then search for **"Respond to Webhook"** and add that one too.
 
 You should now have both nodes sitting on the canvas, unconnected.
 
 ![flow](./assets/4.png)
-
-These two always work together. Think of them as the front door and the reply:
-
-| Node | What it does |
-|---|---|
-| **Webhook** | Answers the call. Receives the contract and the user's question from your web app. |
-| **Respond to Webhook** | Sends the answer back. Returns the agent's response to your web app. |
 
 ![flow](./assets/5.png)
 
