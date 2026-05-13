@@ -17,15 +17,15 @@ By the end of this lesson you will:
 
 ## Starter Skills for This Course
 
-Download and install these four skills to use throughout the program. Each one is built for a core PM workflow.
+Download and install these five skills to use throughout the program. Each one is built for a core PM workflow — install them in order and you'll have the full discovery-to-delivery stack ready to go.
 
-| Skill | Command | What It Does | Download |
-|---|---|---|---|
-| Market Research | `/market-research` | Analyzes a market — size, players, trends, opportunities, and key insights for your team | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQCwxLJr3-XKTqU_Xo9ktzMlARtfX5VuIeD4dvhfm3adAw8?e=GSBweE) |
-| User Research | `/user-research` | Synthesizes user research input into findings, pain points, and product recommendations | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAPNUc3xnVASoPOKxepVkR3Ad9KwoiIbdnYWGBUcVYocuk?e=byQyfS) |
-| Idea Eval | `/idea-eval` | Evaluates a product idea across problem severity, market size, feasibility, and business potential | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQATilNPFrqDSI4DEq6DApRLAbs-ymZuhk9h4UmZ8iM8Wr4?e=sequYq) |
-| PRD Eval | `/prd-eval` | Reviews a PRD for gaps, ambiguity, missing sections, and readiness to hand to engineering | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQBs7yXfTt-xS7O9pGHlFavGAYhL8cn-iO6Ctdi5UO5Z8ws?e=xNQdZ4) |
-| Write Your PRD | `/write-your-prd` | Guides you through writing a complete PRD from scratch | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQARMbe9Qlz1R4yuqWzKKwQoAQlgWsZNLIEnP8z4xposz1Y?e=i7lrrb) |
+| # | Skill | Command | What It Does | Download |
+|---|---|---|---|---|
+| 1 | Idea Eval | `/idea-eval` | Evaluates a product idea across problem severity, market size, feasibility, and business potential | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQBdnPc0I9iMQrYvYs1H_wVyATUTDcq9v2Qki29OmuucF8Y?e=8bQQQb) |
+| 2 | Market Research | `/market-research` | Analyzes a market — size, players, trends, opportunities, and key insights for your team | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQCwxLJr3-XKTqU_Xo9ktzMlARtfX5VuIeD4dvhfm3adAw8?e=GSBweE) |
+| 3 | User Research | `/user-research` | Synthesizes user research input into findings, pain points, and product recommendations | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAPNUc3xnVASoPOKxepVkR3Ad9KwoiIbdnYWGBUcVYocuk?e=byQyfS) |
+| 4 | Write Your PRD | `/write-your-prd` | Guides you through writing a complete PRD from scratch | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQARMbe9Qlz1R4yuqWzKKwQoAQlgWsZNLIEnP8z4xposz1Y?e=i7lrrb) |
+| 5 | PRD Eval | `/prd-eval` | Reviews a PRD for gaps, ambiguity, missing sections, and readiness to hand to engineering | [Download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQBs7yXfTt-xS7O9pGHlFavGAYhL8cn-iO6Ctdi5UO5Z8ws?e=xNQdZ4) |
 
 **Want to go deeper?** Read the [Complete Guide to Building Skills for Claude](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf) for a full walkthrough from Anthropic.
 
@@ -67,7 +67,7 @@ Open Claude . You can start from any surface — **Cowork**, or **Code**.
 1. Select the skill file you downloaded (e.g. `market-research.md`)
 2. Confirm the upload
 
-Repeat Steps 3–4 for each of the four skill files.
+Repeat Steps 3–4 for each of the five skill files.
 
 ![claude](./assets/3.png)
 
