@@ -29,8 +29,7 @@ You'll see one of two things.
 **Option A — a rate limit error:**
 
 ```
-Error: Request failed with status 429
-Rate limit reached for tokens per minute
+Bad Request - input exceeds the context
 ```
 
 ![flow](./assets/1.png)
