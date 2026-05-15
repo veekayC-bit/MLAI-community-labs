@@ -1,6 +1,6 @@
 # Lab 1.3: Agentic RAG — When One Retriever Isn't Enough
 
-![banner](./assets/b.png)
+![banner](./assets/flow.png)
 
 In Lab 1.2 you built a working RAG pipeline. A user uploads a contract. The system chunks it, embeds it, and stores it. When someone asks a question, it pulls the five most relevant chunks and hands them to an AI that writes an answer.
 
