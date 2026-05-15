@@ -73,7 +73,8 @@ By the end of this lab, you will:
 
 ✅ **OpenAI API key** — already set up in n8n from Lab 1.1. You won't need to add it again unless you're starting fresh.
 
-✅ **A lease contract PDF** — use the sample contract. [Download it here](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=XyvLU4) if you don't have it.
+✅ **A contract PDF** — use the same sample contract 
+. [Download it here](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQDCjXtik46fSrlq-FwTPD7xASjbyEXBKIPCqTLCAloobR0?e=caCgUB) if you don't have it.
 
 ---
 
