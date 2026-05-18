@@ -122,6 +122,8 @@ n8n encrypts and stores it. You won't need to paste it again across any of the l
 
 > ★ Your API key is tied to your OpenAI billing account. Never paste it into a public file or share it in a message. Treat it like a password.
 
+> ★ **Save your API key before you paste it here.** Once you save a credential in n8n, the key is encrypted — you cannot view or retrieve it again. Copy it to a password manager or a secure note *before* entering it. If you lose it, you'll need to generate a new one from platform.openai.com and update the credential.
+
 ---
 
 **Step 5. Open the chat and test.**
@@ -328,6 +330,16 @@ Click **"Add Node"**, search for **Language Model**, and choose **"OpenAI Chat M
 
 > **Why is this separate?** Because the model is swappable. Today you're using OpenAI. Tomorrow you might want to use Claude or a local model. By keeping the model as its own node, you can swap it without touching anything else in the workflow. This modularity is the entire point of building in n8n.
 
+**Which model should you select?** Inside the OpenAI Chat Model node, open the **Model** dropdown and select **`gpt-5-mini`**.
+
+| Model | Best for | Relative cost |
+|---|---|---|
+| **gpt-5-mini** | Document Q&A, clause extraction, structured output — this lab | Low |
+| **gpt-4.1-mini** | Fallback if gpt-5-mini isn't available on your account tier | Lower |
+| **gpt-4.1-nano** | Maximum cost savings — simpler documents, less precise extraction | Lowest |
+
+> **Why gpt-5-mini for this lab?** Three reasons: speed, cost, and fit. Our agent's job is narrow — extract relevant clauses and answer a direct question. That doesn't require the full reasoning depth of gpt-4.1. gpt-5-mini handles document Q&A well, costs significantly less per token, and responds faster. Model selection is always a cost-capability trade-off. As your agents grow more complex — multi-step reasoning, conflicting clauses, long contracts — you'll revisit this decision.
+
 ---
 
 ### Step 12. Add Your OpenAI API Key
@@ -337,6 +349,8 @@ Inside the OpenAI Chat Model settings, click **"Credential"** → **"Create New 
 ![flow](./assets/add-api-key.gif)
 
 > **What is an API key?** It's how OpenAI knows who's making the request and which account to charge. When n8n sends your prompt to OpenAI, it includes your key in the request. OpenAI's servers verify it, run the model, and send the response back. The whole round trip — question in, answer out — happens in about a second. You pay per round trip, which is why model choice is a cost decision as much as a capability one.
+
+> ★ **Save your API key before you paste it.** Once stored in n8n, the key is encrypted and cannot be viewed or retrieved again. Copy it to a password manager *before* entering it here. If you lose it, you'll need to generate a new key from platform.openai.com — your old one won't be recoverable.
 
 ---
 
@@ -375,6 +389,34 @@ You just built a working AI agent from scratch. Here's what you now understand t
 **The system message is where product decisions live.** Tone, scope, guardrails, output format — all of it comes from one block of plain text you wrote. Two agents running the same model can behave completely differently because of their system messages. This is the PM's highest-leverage tool.
 
 **Models are swappable.** The OpenAI node is just one option. Swap it for Claude, Gemini, or a local model without touching the rest of the workflow. This is why the architecture separates orchestration from reasoning.
+
+---
+
+## Known Issues
+
+These are the most common problems learners hit in this lab. Check here before asking for help.
+
+---
+
+**OpenAI credits exhausted**
+
+Your agent stops responding with an error like `429 - You exceeded your current quota` or `insufficient_quota`. This means your OpenAI account has no remaining credits.
+
+Fix: go to **platform.openai.com → Billing → Add payment method** and add $5 of credits. Your API key stays the same — just retry in n8n once billing is active.
+
+> ✓ Tip. n8n gives you a small OpenAI credit when you start. It's enough for a few test runs but won't last through all the labs. Add credits now and you won't have to think about it mid-session.
+
+---
+
+**Model not available — permission error**
+
+You may see an error like `model_not_found` or `The model does not exist or you do not have access to it`. This usually means your OpenAI account hasn't been granted access to that model tier.
+
+Fix: go to **platform.openai.com → Settings → Limits** and verify which models your account can access. Free-tier and new accounts often have restrictions. If `gpt-5-mini` is blocked, try `gpt-3.5-turbo` as a fallback while your account upgrades.
+
+---
+
+> ✓ This list grows as cohort members surface new issues. If you hit something not covered here, bring it to the session — it'll be added for the next cohort.
 
 ---
 

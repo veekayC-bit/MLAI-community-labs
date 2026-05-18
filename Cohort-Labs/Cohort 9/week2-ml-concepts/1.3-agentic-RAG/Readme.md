@@ -777,7 +777,6 @@ Let's trace what happens when a user asks *"What are the risks in this lease?"* 
 
 ![flow](./assets/banner0.png)
 
-
 ```
 User: "What are the risks in this lease?"
               ↓
@@ -807,7 +806,7 @@ The single AI then has to do everything at once: plan, retrieve, analyze, synthe
 
 ### The Agentic RAG Flow (Lab 1.3)
 
-
+![banner](./assets/designdiagram.png)
 
 ```
 User: "What are the risks in this lease?"
@@ -913,4 +912,4 @@ You now have the core pattern of agentic retrieval: plan, retrieve, route, speci
 
 ---
 
-[← Back to Lab 1.2: Understanding RAG](../1.2-understanding-RAG/Readme.md) | [Back to Week 2 Overview](../readme.md)
+[← Back to Lab 1.2: Understanding RAG](../1.2-understanding-RAG/Readme.md) | [Back to Week 2 Overview](../Readme.md)
