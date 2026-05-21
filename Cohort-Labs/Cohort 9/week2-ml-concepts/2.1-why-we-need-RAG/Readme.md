@@ -14,7 +14,7 @@ Go back to the agent you built in [Lab 1.1 — Build Your First AI Agent in n8n]
 
 Open the workflow. Before you run it, click the **OpenAI Chat Model** node and make sure the model is set to **`gpt-4.1-mini`**. Then run it — but this time, instead of the small sample contract, upload a larger one.
 
-Use any multi-page contract you have access to. A real vendor agreement, an employment contract, an NDA with many clauses. Anything over 30–40 pages works. If you don't have one, [download this larger test contract](https://drive.google.com/file/d/1RMzUyryxh88qiXTW6psH6lEfrhQ8H2ZQ/view?pli=1).
+Use any multi-page contract you have access to. A real vendor agreement, an employment contract, an NDA with many clauses. Anything over 30–40 pages works. If you don't have one, [download this larger test contract](https://drive.google.com/file/d/1RMzUyryxh88qiXTW6psH6lEfrhQ8H2ZQ/view).
 
 Ask it the same question you used in Week 1:
 
