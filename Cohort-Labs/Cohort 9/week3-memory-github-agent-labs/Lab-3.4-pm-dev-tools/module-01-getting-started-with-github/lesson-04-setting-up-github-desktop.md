@@ -150,4 +150,4 @@ You can now:
 
 Your repo is on your machine. Now you need the tools to open it, read it, and run AI inside it.
 
-**[→ Module 02, Lesson 01: Installing Node.js and VS Code](../module-02-installing-vscode-and-claude-code/lesson-01-installation.md)**
+**[→ Module 02, Lesson 01: Setting Up Claude Code](../module-02-installing-vscode-and-claude-code/lesson-01-setting-up-claude.md)**

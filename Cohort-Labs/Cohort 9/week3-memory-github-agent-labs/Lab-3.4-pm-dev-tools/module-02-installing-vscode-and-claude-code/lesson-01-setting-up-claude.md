@@ -183,13 +183,12 @@ Navigate to the folder where your forked `ai-community-site` repository was clon
 
 You'll see all the project files appear in the VS Code Explorer panel on the left.
 
-![Project Files](./images/g5.png)
-
 ---
 
 ### Step 3 — Open the Terminal Inside VS Code
 
-Click **Terminal → New Terminal** from the VS Code menu.
+
+Once the folder is opened Click **Terminal → New Terminal** from the VS Code menu.
 
 The terminal will open at the root of your project folder.
 
@@ -197,7 +196,7 @@ The terminal will open at the root of your project folder.
 
 ---
 
-### Step 5 — Launch Claude
+### Step 4 — Launch Claude
 
 In the terminal, type:
 
@@ -209,13 +208,13 @@ claude
 
 ---
 
-### Step 6 — Select a Theme
+### Step 5 — Select a Theme
 
 Use the **Up/Down arrow keys** to pick a theme, then press **Enter** to confirm. The dark theme is selected by default — just press **Enter** to keep it.
 
 ---
 
-### Step 7 — Choose Account Type and Sign In
+### Step 6 — Choose Account Type and Sign In
 
 Claude will show two options — select **Claude account with subscription** (the default) and press **Enter**.
 
@@ -227,7 +226,7 @@ Your browser will open automatically. Log in with the account that has your acti
 
 ---
 
-### Step 8 — Finish Login and Configure
+### Step 7 — Finish Login and Configure
 
 1. You'll see **Login successful** — press **Enter**
 
@@ -240,7 +239,7 @@ Your browser will open automatically. Log in with the account that has your acti
 
 ---
 
-### Step 9 — Test That Claude is Working
+### Step 8 — Test That Claude is Working
 
 Once you see the Claude prompt, type a test question:
 

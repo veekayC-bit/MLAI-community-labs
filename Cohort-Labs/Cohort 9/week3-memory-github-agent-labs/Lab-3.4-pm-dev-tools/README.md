@@ -49,23 +49,24 @@ Module 01            Module 01           Module 02           Module 03          
 
 ### Module 01 · Getting Started with GitHub
 
-Your starting point. You create your GitHub identity and download the repo that you will work in for the rest of the workshop.
+Your starting point. You create your GitHub identity, install your tools, fork the project repo, and set up GitHub Desktop.
 
 | Lesson | What You Will Do |
 |---|---|
 | [Lesson 01 · Creating Your GitHub Account](./module-01-getting-started-with-github/lesson-01-creating-your-github-account.md) | Sign up for GitHub and understand what it is and why PMs need it |
-| [Lesson 02 · Setting Up GitHub Desktop](./module-01-getting-started-with-github/lesson-04-setting-up-github-desktop.md) | Install GitHub Desktop, sign in, and clone the workshop repository to your machine |
+| [Lesson 02 · Installing Node.js and VS Code](./module-01-getting-started-with-github/lesson-02-intallation-vscode.md) | Install the JavaScript runtime and the code editor you will use throughout the workshop |
+| [Lesson 03 · Forking the Project Repository](./module-01-getting-started-with-github/lesson-03-forking-project.md) | Fork the workshop repo to your own GitHub account so you can push changes |
+| [Lesson 04 · Setting Up GitHub Desktop](./module-01-getting-started-with-github/lesson-04-setting-up-github-desktop.md) | Install GitHub Desktop, sign in, and clone your forked repository to your machine |
 
 ---
 
-### Module 02 · Installing VS Code and Claude Code
+### Module 02 · Setting Up Claude Code
 
-You now have a repo on your machine but no way to open or run it. This module gives you the two tools that turn your machine into a working AI-powered development environment.
+You now have a repo on your machine. This module installs Claude Code, authenticates it with your account, and gets it running live inside VS Code.
 
 | Lesson | What You Will Do |
 |---|---|
-| [Lesson 01 · Installing Node.js and VS Code](./module-02-installing-vscode-and-claude-code/lesson-01-installation.md) | Install the JavaScript runtime and the code editor you will use throughout the workshop |
-| [Lesson 02 · Setting Up Claude Code](./module-02-installing-vscode-and-claude-code/lesson-02-setting-up-claude.md) | Install Claude Code, authenticate it with your Claude account, and run it inside VS Code |
+| [Lesson 01 · Setting Up Claude Code](./module-02-installing-vscode-and-claude-code/lesson-01-setting-up-claude.md) | Install Claude Code, authenticate it with your Claude account, and run it inside VS Code |
 
 ---
 
@@ -111,10 +112,11 @@ If you are starting fresh, begin at the first lesson:
 
 ```
 1. Create GitHub account              Module 01 · Lesson 01
-2. Install GitHub Desktop + clone     Module 01 · Lesson 02
-3. Install Node.js + VS Code          Module 02 · Lesson 01
-4. Install + auth Claude Code         Module 02 · Lesson 02
-5. Create a branch                    Module 03 · Lesson 01
-6. Run app + make UI change           Module 04 · Lesson 01
-7. Commit + Push + Pull Request       Module 05 · Lesson 01
+2. Install Node.js + VS Code          Module 01 · Lesson 02
+3. Fork the project repo              Module 01 · Lesson 03
+4. Install GitHub Desktop + clone     Module 01 · Lesson 04
+5. Install + auth Claude Code         Module 02 · Lesson 01
+6. Create a branch                    Module 03 · Lesson 01
+7. Run app + make UI change           Module 04 · Lesson 01
+8. Commit + Push + Pull Request       Module 05 · Lesson 01
 ```
