@@ -545,4 +545,4 @@ You've built the core of a document-aware AI system. The next labs will expand o
 
 ---
 
-[← Back to Week 2 Overview](../readme.md)
+[Next Lab →](../2.3-agentic-ragembedding/Readme.md)

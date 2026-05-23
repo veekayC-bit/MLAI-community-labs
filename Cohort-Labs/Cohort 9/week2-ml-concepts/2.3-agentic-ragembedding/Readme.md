@@ -521,3 +521,7 @@ what is the name of the customer ?
 ![ouput](./images/op1.png)
 
 © **All rights reserved Mahesh Yadav Institute**. No part of this course can be reproduced, distributed, or transmitted in any form without permission.
+
+---
+
+[Next Lab →](../2.4-claude-skills/Readme.md)
