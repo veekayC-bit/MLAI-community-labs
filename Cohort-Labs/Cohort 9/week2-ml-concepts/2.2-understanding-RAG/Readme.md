@@ -59,8 +59,34 @@ These two pipelines run separately. The ingestion happens once. The retrieval ha
 
 ✅ **OpenAI API key** — already set up in n8n from Lab 2.1. You won't need to add it again unless you're starting fresh.
 
-✅ **A contract PDF** — use the same sample contract 
-. [Download it here](https://drive.google.com/file/d/1RMzUyryxh88qiXTW6psH6lEfrhQ8H2ZQ/view) if you don't have it.
+✅ **A contract PDF** — use the same sample contract. [Download it here](https://drive.google.com/file/d/1RMzUyryxh88qiXTW6psH6lEfrhQ8H2ZQ/view) if you don't have it.
+
+✅ **n8n Workflow file** — [Download the pre-built workflow JSON here](https://drive.google.com/file/d/1bsHT4DsEvLFZv2WPBdnXJoEAfEn9R6Ka/view) if you'd like to import it instead of building from scratch.
+
+---
+
+### Two ways to complete this lab
+
+**Option A — Import our workflow (faster)**
+
+If you want to skip the step-by-step build and jump straight to testing, you can import the pre-built workflow JSON:
+
+1. Log into n8n and open a blank canvas (click **"Create Workflow"**).
+
+![image](./assets/img-4.png)
+
+2. Click the **three-dot menu (⋮)** in the top-right corner of the canvas.
+3. Select **"Import from file"**.
+
+
+![image](./assets/img-5.png)
+
+5. Choose the JSON file you downloaded from the prerequisite section above.
+6. The two workflows (ingestion + retrieval) will load onto the canvas. Add your OpenAI credentials to the embedding and model nodes, then proceed to the **Test Everything** section.
+
+**Option B — Build from scratch (recommended)**
+
+Follow the step-by-step instructions below. You'll understand every node, every config choice, and why the system works the way it does.
 
 ---
 

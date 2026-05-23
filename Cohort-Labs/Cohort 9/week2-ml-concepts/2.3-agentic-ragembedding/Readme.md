@@ -517,7 +517,7 @@ what is the name of the customer ?
 
 5️⃣ The final answer is displayed, either as a Direct Answer or an Optimized Answer.
 ## Output
-![Output](op2.png)
-![Output](op1.png)
+
+![ouput](./images/op1.png)
 
 © **All rights reserved Mahesh Yadav Institute**. No part of this course can be reproduced, distributed, or transmitted in any form without permission.

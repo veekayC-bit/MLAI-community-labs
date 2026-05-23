@@ -309,4 +309,3 @@ You ran the full PM loop on a real product idea — from "someone told me we sho
 
 ---
 
-[← Back to Week 2 Overview](../readme.md)
