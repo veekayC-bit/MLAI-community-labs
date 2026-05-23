@@ -2,21 +2,21 @@
 
 ## Prerequisites — Download These Files Before Starting
 
-Download the following files from this repository **before** you begin the lab steps.
+Download the following files **before** you begin the lab steps. Click each link to open and download from SharePoint.
 
 **Knowledge base files** — upload these to your agent in Step 9:
 
-| File | Purpose |
-|---|---|
-| `sample-nda-template.pdf` | Company-approved NDA template with standard clauses |
-| `approved-clause-library.pdf` | Library of pre-approved legal clause language |
-| `compliance-risk-policy.pdf` | Internal standards for acceptable contract terms |
+| File | Download Link | Purpose |
+|---|---|---|
+| `approved-clause-library.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQC2ASx4HjMKRqsgo7M0Ez5gAbqx_jxrBg8rRuPV9V6Sqlw?e=STefps) | Library of pre-approved legal clause language |
+| `company-procurement-policy.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBLGziPLVuUS7zZKZQWtvX-AaLTXWYc7ToGycZRePRpD5I?e=X2JAya) | Internal standards for acceptable contract terms |
 
-**Test contract** — use this to query your agent in Step 13:
+**Test contracts** — use these to query your agent in Step 13:
 
-| File | Purpose |
-|---|---|
-| `test-vendor-agreement.pdf` | A sample vendor contract with intentional risk clauses for analysis |
+| File | Download Link | Purpose |
+|---|---|---|
+| `sample-vendor-agreement.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBx9d3XaHxeSbdXQ-Gf7IVfATeanSERWgBzWlB2I8l2b4s?e=CpREVd) | A sample vendor contract with intentional risk clauses for analysis |
+| `sample-nda-contract.pdf` | [Download](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=6M7I04) | A sample NDA contract to test the agent's clause extraction and risk detection |
 
 ---
 
@@ -760,21 +760,23 @@ Let us recap what we covered and what you built:
 
 ## 9. Prereq Files — Sample Contracts for Testing
 
-Download the following three files from this repository to use as your knowledge base during the lab:
+All files are linked below. Click to download from SharePoint.
 
-| File | Purpose |
-|---|---|
-| `sample-nda-template.pdf` | Company-approved NDA template with standard clauses |
-| `approved-clause-library.pdf` | Library of pre-approved legal clause language |
-| `compliance-risk-policy.pdf` | Internal standards for acceptable contract terms |
+**Knowledge base files** — upload these in Step 9:
 
-Additionally, use this file to test your agent after setup:
+| File | Download Link | Purpose |
+|---|---|---|
+| `approved-clause-library.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQC2ASx4HjMKRqsgo7M0Ez5gAbqx_jxrBg8rRuPV9V6Sqlw?e=STefps) | Library of pre-approved legal clause language |
+| `company-procurement-policy.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBLGziPLVuUS7zZKZQWtvX-AaLTXWYc7ToGycZRePRpD5I?e=X2JAya) | Internal standards for acceptable contract terms |
 
-| File | Purpose |
-|---|---|
-| `test-vendor-agreement.pdf` | A sample vendor contract with several intentional risk clauses for analysis |
+**Test contracts** — use these to query your agent in Step 13:
 
-Upload the first three files as your agent's **knowledge base** (Step 9). Use the last file as your **test contract** (Step 13).
+| File | Download Link | Purpose |
+|---|---|---|
+| `sample-vendor-agreement.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBx9d3XaHxeSbdXQ-Gf7IVfATeanSERWgBzWlB2I8l2b4s?e=CpREVd) | A sample vendor contract with intentional risk clauses for analysis |
+| `sample-nda-contract.pdf` | [Download](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=6M7I04) | A sample NDA contract to test clause extraction and risk detection |
+
+Upload the knowledge base files to your agent (Step 9). Use either test contract to query the agent (Step 13).
 
 ---
 
