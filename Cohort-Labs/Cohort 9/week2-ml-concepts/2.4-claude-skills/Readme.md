@@ -21,14 +21,16 @@ By the end of this lab, you will:
 
 ## Before You Start
 
+> **A note of thanks:** A big thank you to our mentor, who has worked behind the scenes to make these skills more advanced and useful. Several skills have been updated and improved beyond what you'll find elsewhere — that extra polish is entirely their effort. We're grateful for the time and expertise they've put in to make this lab a better learning experience for everyone.
+
 ### Install the skills
 
 Make sure you have all four skills installed in Claude. If you haven't done this yet, go to [How to Add Skills to Claude](../../week%200%20%20-%20foundation/how-to-add-skills-to-claude/readme.md) first and install:
 
-- `/market-research`
+- [`/market-research`](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQCwxLJr3-XKTqU_Xo9ktzMlARtfX5VuIeD4dvhfm3adAw8?e=z6cbPU)
 - `/user-research`
-- `/prd`
-- `/prd-eval`
+- [`/prd`](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQBzppu9ygMZQJBzV7LluoZUAf8oSY-I37VX3PqO5PBwLP4?e=b7olQr) *(zip file — download and drag & drop into Claude to install)*
+- [`/prd-eval`](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAfxmw5rEDEQawrm3IkktEQAbbQAXVt_mkLAU7Rlv5xpCU?e=yBEEwL)
 
 ### Create your project workspace
 
