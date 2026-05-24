@@ -27,10 +27,10 @@ By the end of this lab, you will:
 
 Make sure you have all four skills installed in Claude. If you haven't done this yet, go to [How to Add Skills to Claude](../../week%200%20%20-%20foundation/how-to-add-skills-to-claude/readme.md) first and install:
 
-- [`/market-research`](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQCwxLJr3-XKTqU_Xo9ktzMlARtfX5VuIeD4dvhfm3adAw8?e=z6cbPU)
-- `/user-research`
-- [`/prd`](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQBzppu9ygMZQJBzV7LluoZUAf8oSY-I37VX3PqO5PBwLP4?e=b7olQr) *(zip file — download and drag & drop into Claude to install)*
-- [`/prd-eval`](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAfxmw5rEDEQawrm3IkktEQAbbQAXVt_mkLAU7Rlv5xpCU?e=yBEEwL)
+- [`/market-research`](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQCwxLJr3-XKTqU_Xo9ktzMlARtfX5VuIeD4dvhfm3adAw8?e=z6cbPU) — [Click here to download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQCwxLJr3-XKTqU_Xo9ktzMlARtfX5VuIeD4dvhfm3adAw8?e=z6cbPU)
+- [`/user-research`](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAPNUc3xnVASoPOKxepVkR3Ad9KwoiIbdnYWGBUcVYocuk?e=eKv5qY) — [Click here to download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAPNUc3xnVASoPOKxepVkR3Ad9KwoiIbdnYWGBUcVYocuk?e=eKv5qY)
+- [`/prd`](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQBzppu9ygMZQJBzV7LluoZUAf8oSY-I37VX3PqO5PBwLP4?e=b7olQr) — [Click here to download](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQBzppu9ygMZQJBzV7LluoZUAf8oSY-I37VX3PqO5PBwLP4?e=b7olQr) *(zip file — download and drag & drop into Claude to install)*
+- [`/prd-eval`](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAfxmw5rEDEQawrm3IkktEQAbbQAXVt_mkLAU7Rlv5xpCU?e=yBEEwL) — [Click here to download](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQAfxmw5rEDEQawrm3IkktEQAbbQAXVt_mkLAU7Rlv5xpCU?e=yBEEwL)
 
 ### Additional Files
 
