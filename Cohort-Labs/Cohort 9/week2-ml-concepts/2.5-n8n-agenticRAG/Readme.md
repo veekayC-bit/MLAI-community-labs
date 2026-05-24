@@ -64,7 +64,7 @@ Think of it as a **highly cautious legal research assistant** — one that refus
 
 Download the following files before starting the lab:
 
-- ✅ **n8n Workflow file** — [Download the pre-built workflow JSON here](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQB8uV7h11OERb2oCd_Ejkj2AZseoP5phUaKMxWaqWB88Fw?e=P5aXvy) if you'd like to import it instead of building from scratch.
+- ✅ **n8n Workflow file** — [Download the pre-built workflow JSON here](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQBHa0xmd9IbRLU98-oCbR6AAcA42Ml8T-oyPBWHzXe6Zdc?e=YjxOCo) if you'd like to import it instead of building from scratch.
 - [Reference Document](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQB8uV7h11OERb2oCd_Ejkj2AZseoP5phUaKMxWaqWB88Fw?e=P5aXvy) — Download the test Contract
 ---
 

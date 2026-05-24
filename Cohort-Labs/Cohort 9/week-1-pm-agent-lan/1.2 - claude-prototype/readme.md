@@ -46,6 +46,8 @@ This lab uses Claude Code.
 
 ✅ The **sample contract PDF** from Lab 1.1 — same file, use it again here. [Download it here](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=XyvLU4) if you don't have it.
 
+✅ The **CLAUDE.md template** — you'll use this in Part 3 and Part 4. [Download it here](https://pragyaallc-my.sharepoint.com/:t:/g/personal/sachin_parmar_legalgraph_ai/IQBnG9WXfhcYT7dES8zbfP6kAUIWwjMvbu6PzKKmLHdejAI?e=5nhIQM). This is a template — you'll modify it with your own company context before using it.
+
 ---
 
 ## Part 1: Build First, Ask Questions Later
@@ -140,11 +142,38 @@ There are actually three places you can put a CLAUDE.md file, depending on who y
 | `CLAUDE.local.md` | Project root | ❌ No — in `.gitignore` | Your personal preferences, stays off the shared repo |
 | `CLAUDE.md` | `~/.claude/` | ❌ No — your machine only | Global instructions across every project you work on |
 
-For this lab, we'll set up the project-level CLAUDE.md — the one that shapes this specific app and any features you add to it later.
+For this lab, we'll work at two levels — global first, then project.
+
+**Set up the global CLAUDE.md first:**
+
+1. Open the Claude desktop app and go to **Claude Code**
+2. Attach the `CLAUDE.md` template file you downloaded from the prerequisites section
+3. Run this prompt:
+
+```
+Use this CLAUDE.md file as my global Claude configuration. Save it to ~/.claude/CLAUDE.md so it applies across every project I work on.
+```
+
+This tells Claude your defaults once — and they carry into every future project automatically, not just this one.
+
+Now we'll also set one up at the project level, which is what the next part covers.
 
 ---
 
 ## Part 4: Set It Up and Run It Again
+
+Now set up the **project-level** CLAUDE.md. This one lives inside your `contract-review-app` folder and shapes only this project — committed to git so your whole team gets it.
+
+Here's the difference between the two levels:
+
+| Level | File location | Who it applies to | Committed to git? |
+|---|---|---|---|
+| **Global** | `~/.claude/CLAUDE.md` | You, across every project | No — stays on your machine |
+| **Project** | `contract-review-app/CLAUDE.md` | Everyone working on this project | Yes — shared with the team |
+
+You already set the global one in Part 3. Now create the project-level one.
+
+> This template is a starting point — update it with your own company name, brand colors, and design conventions before using it in a real project.
 
 Run this in Claude Code:
 
