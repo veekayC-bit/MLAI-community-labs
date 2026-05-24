@@ -246,36 +246,6 @@ Now that you've run the lab, here is a full picture of what you just executed. T
 └──────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Full System Diagram
-
-```mermaid
-flowchart TD
-    subgraph INGESTION["📄 Pipeline A — Document Ingestion"]
-        A1([🖊️ Upload Contract Form]) --> A2[📂 PDF Data Loader]
-        A3[✂️ Text Splitter] --> A2
-        A4[🔢 OpenAI Embeddings] --> A5[(🗄️ Vector Store\nIn-Memory)]
-        A2 --> A5
-    end
-
-    subgraph QUERY["💬 Pipeline B — Query & Answer"]
-        B1([💬 Chat Message Received]) --> B2[🔀 Merge Node]
-        B2 --> B3[✏️ AI: Query Rewriter]
-        B3 --> B4[🤖 AI Agent — RAG]
-        B4 <-->|searches| B5[(🔍 Vector Search Tool)]
-        B6[🔢 OpenAI Embeddings 2] --> B5
-        B4 --> B7[⚙️ Parse Agent Output]
-        B7 --> B8[⚖️ AI: Faithfulness Judge]
-        B8 --> B9[⚙️ Parse Judge Output]
-        B9 --> B10{🚦 Quality Gate\nverdict = pass?}
-        B10 -->|✅ PASS| B11([📨 Send Answer to User])
-        B10 -->|❌ FAIL| B12[🔁 Edit Fields — Retry]
-        B12 --> B13[🔄 Loop Controller]
-        B13 -->|loop back| B2
-        B13 -->|loop done| B14([📨 Send Final Answer])
-    end
-
-    A5 -.->|searched by| B5
-```
 
 ---
 
