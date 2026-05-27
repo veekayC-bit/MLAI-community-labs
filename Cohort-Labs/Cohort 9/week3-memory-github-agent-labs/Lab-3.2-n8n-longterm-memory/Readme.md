@@ -1,4 +1,4 @@
-# Lab 1.4: n8n Advanced Memory - Long-Term Memory Demonstration
+# n8n Advanced Memory - Long-Term Memory Demonstration
 
 ![](./images/b0.png)
 
