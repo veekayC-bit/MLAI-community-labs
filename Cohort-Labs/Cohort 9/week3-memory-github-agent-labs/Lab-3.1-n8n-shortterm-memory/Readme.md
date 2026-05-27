@@ -34,12 +34,12 @@ Before beginning this lab, ensure you have completed the following:
 
 - **New to n8n!** Set up your account: **[Click Here](../../Module%200%20-%20Prerequisite/n8n-loginSetup/Doc.md)**
 - **Generate your OpenAI API key:** **[Click Here](https://youtu.be/YyaZ8zaGS-Q?si=bOw8C_TWgMg8S1hU)**
-- **Download n8n workflow file:** **[Click Here](https://drive.google.com/file/d/1jfvkdxNXoP7AmJ8V4_jXC5ciIwRIEeiJ/view?usp=sharing)**
+- **Download n8n workflow file:** **[Click Here](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQCSWsHsMnLsTYf1dULasZKyAQT4bgsLAnEccAUGZaBxDRM?e=zrppZc)**
 
 ---
 
 
-## Hands-On: Building Your RAG System
+## Hands-On: Building Your Workflow
 
 ### Step 1: Set Up Your n8n Account
 

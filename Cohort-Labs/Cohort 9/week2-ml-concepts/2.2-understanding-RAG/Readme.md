@@ -59,32 +59,27 @@ These two pipelines run separately. The ingestion happens once. The retrieval ha
 
 ✅ **OpenAI API key** — already set up in n8n from Lab 2.1. You won't need to add it again unless you're starting fresh
 
-✅ **A contract PDF** — use the same sample contract. [Download it here](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQAbCBMxqrFrT6hzD6t9oCdpAR8pdsHtVaZf2O5HiyGq5jY?e=Cb3PMd) if you don't have it.
+✅ **A sample contract (PDF)** — [Download the contract in PDF format](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQAbCBMxqrFrT6hzD6t9oCdpAR8pdsHtVaZf2O5HiyGq5jY?e=Cb3PMd)
 
-✅ [Reference Document- Docx Fromat](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQAbCBMxqrFrT6hzD6t9oCdpAR8pdsHtVaZf2O5HiyGq5jY?e=4s3M8D) — Download the test Contract make sure you upload the contract is docx format
+✅ **A sample contract (Docx)** — [Download the contract in Docx format](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQAbCBMxqrFrT6hzD6t9oCdpAR8pdsHtVaZf2O5HiyGq5jY?e=4s3M8D)
 
-✅ **n8n Workflow file** — [Download the pre-built workflow JSON here](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQB8uV7h11OERb2oCd_Ejkj2AZseoP5phUaKMxWaqWB88Fw?e=P5aXvy) if you'd like to import it instead of building from scratch.
+✅ **n8n Workflow file** — [Download the pre-built workflow JSON here](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQA5OM4afrVkT6IPOVS7Tt1oAdqHaDatGQNsGPHzQDXwxwus?e=5Byd7L) if you'd like to import it instead of building from scratch.
 
 ---
 
-# Quick Note
-  ▎
-  ▎ If you are facing the issue below while 
-  ▎ running the workflow, follow these steps:
-  
-  ![banner](./assets/9089.png)
+**Quick Note**
 
-  ▎
-  ▎ 1. Make sure you change the default data 
-  ▎ loader from PDF to DOCX format.
+If you are facing the issue below while running the workflow, follow these steps:
+
+![banner](./assets/9089.png)
+
+1. Open the default data loader and change the data format from PDF to Docx.
 
 ![banner](./assets/9000.png)
 
-  ▎ 2. When uploading the document, ensure the
-  ▎ file format is .docx, not .pdf.
-  ▎
-  ▎ If you are not facing this issue, you can 
-  ▎ continue with the current workflow.
+2. When uploading the document, ensure the file format is .docx, not .pdf.
+
+If you are not facing this issue, you can continue with the current workflow.
 
 
 
