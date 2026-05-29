@@ -89,32 +89,38 @@ Once your project is ready:
 Click inside the editor, paste the full SQL query below, then run it:
 
 ```sql
-CREATE TABLE IF NOT EXISTS contract_risks (
-  risk_id VARCHAR(10),
-  contract_type VARCHAR(20),
-  clause_name VARCHAR(100),
-  risk_level VARCHAR(10),
-  risk_description TEXT,
-  past_occurrences INT,
-  financial_impact TEXT,
-  recommended_action TEXT,
-  flagged_by VARCHAR(50),
-  created_at TIMESTAMP DEFAULT NOW()
+-- Create playbook table
+CREATE TABLE IF NOT EXISTS playbook (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  contract_type TEXT,
+  topic TEXT,
+  guidance TEXT,
+  step_order INT,
+  owner TEXT,
+  created_at TIMESTAMP DEFAULT now()
 );
 
-INSERT INTO contract_risks VALUES
-('R001','NDA','Confidentiality Period','High','NDA with no expiry creates indefinite liability. Seen in 18 past contracts.',18,'Legal cost risk above $50,000','Add a 3 to 5 year sunset clause','Legal Team',NOW()),
-('R002','NDA','Scope of Confidential Info','Medium','Overly broad definition restricts normal business operations.',12,'Operational risk','Narrow scope to specific categories only','Legal Team',NOW()),
-('R003','NDA','Governing Law','Low','Governing law set to foreign jurisdiction adds legal cost.',6,'$10,000 to $30,000 if dispute arises','Negotiate to home state jurisdiction','Legal Team',NOW()),
-('R004','MSA','Liability Cap','High','Uncapped liability. In 3 past MSAs claims exceeded contract value by 4x.',9,'Exposure exceeding $200,000','Negotiate cap to 2x total contract value','Finance',NOW()),
-('R005','MSA','Payment Terms','Medium','Net-60 terms requested. Company standard is Net-30.',7,'Cash flow delay of 30 days','Counter-propose Net-30 or early payment discount','Finance',NOW()),
-('R006','MSA','Auto-Renewal','Medium','Auto-renewal without opt-out window. 5 MSAs unintentionally renewed.',5,'$200,000 in unintended renewal costs','Add 60 day opt-out notice window','Legal Team',NOW()),
-('R007','MSA','IP Ownership','High','Vendor claiming ownership of all work product.',6,'Loss of product IP — critical','Insist on work-for-hire clause','Legal Team',NOW()),
-('R008','Lease','Escalation Clause','Medium','Annual rent escalation 8% above CPI. Market standard is 3-5%.',4,'Overpayment $15,000 to $40,000 over 3 years','Negotiate cap at CPI plus 2 percent','Finance',NOW()),
-('R009','Lease','Early Exit Penalty','High','Penalty for early exit is 6 months rent.',2,'$180,000 recorded loss across 2 leases','Negotiate down to 2 months or add break clause','Finance',NOW()),
-('R010','Lease','Maintenance Responsibility','Low','All maintenance including structural assigned to tenant.',3,'$5,000 to $20,000 unexpected cost per year','Push back — structural should be landlord responsibility','Operations',NOW());
+-- Insert NDA data
+INSERT INTO playbook (contract_type, topic, guidance, step_order, owner) VALUES
+('NDA', 'review', 'Check mutual vs one-way NDA. Confirm disclosing and receiving party names match legal entities. Verify confidentiality period is between 1-5 years.', 1, 'Legal'),
+('NDA', 'approval', 'NDA under 1 year term requires Manager approval only. NDA over 1 year requires Legal Head sign-off. NDA with foreign entities requires additional compliance check.', 2, 'Legal'),
+('NDA', 'signing', 'Use DocuSign for all NDA signatures. Both parties must sign within 5 business days of draft finalisation. Store signed copy in Supabase with status active.', 3, 'Operations'),
+('NDA', 'expiry', 'Set expiry reminder 30 days before NDA end date. If renewal needed restart review process from step 1. If not renewed update status to expired in database.', 4, 'Operations'),
 
-SELECT * FROM contract_risks;
+-- Insert MSA data
+('MSA', 'review', 'Verify SOW is attached before review. Payment terms must be Net-30 or better. Liability cap must be minimum 2x contract value. Check IP ownership clause exists.', 1, 'Legal'),
+('MSA', 'approval', 'MSA above $50,000 requires CFO approval. MSA below $50,000 requires Department Head approval. All MSAs require Legal sign-off regardless of value.', 2, 'Finance'),
+('MSA', 'signing', 'Both parties must sign MSA before any SOW work begins. No work or payments start without a fully executed MSA. Use DocuSign with audit trail enabled.', 3, 'Legal'),
+('MSA', 'renewal', 'Send renewal review notice 60 days before MSA expiry. Review all SOWs under the MSA before renewal. If auto-renewal clause exists send opt-out notice 60 days before trigger date.', 4, 'Legal'),
+
+-- Insert Lease data
+('Lease', 'review', 'Confirm lease term, monthly rent amount, annual escalation clause percentage, security deposit amount, and maintenance responsibilities before signing.', 1, 'Finance'),
+('Lease', 'approval', 'Lease above 3 years or above $100,000 per year requires Board approval. Lease below these thresholds requires CFO and Legal approval only.', 2, 'Finance'),
+('Lease', 'signing', 'Property inspection report must be attached before signing. Lease must be signed by authorised signatory only. Register lease if term exceeds 12 months as per local law.', 3, 'Operations'),
+('Lease', 'exit', 'Notice period for early exit is 90 days minimum. Penalty clause applies if exit is before 12 months. Conduct property inspection before handover. Recover security deposit within 30 days.', 4, 'Legal');
+
+-- Verify data
+SELECT * FROM playbook ORDER BY contract_type, step_order;
 ```
 
 ![Paste SQL](./images/7.png)
@@ -136,11 +142,11 @@ Click **"Run"** to execute. If prompted, click **"Run Without RLS"** — this by
 Confirm the data was inserted correctly:
 
 1. In the left sidebar, click **"Table Editor"**
-2. Click on the **`contract_risks`** table
+2. Click on the **`playbook`** table
    
 ![Table Editor](./images/12.png)
 
-3. You should see all 10 rows of contract risk data
+3. You should see all 12 rows of playbook data (4 steps each for NDA, MSA, and Lease)
 
 ![Table Data](./images/13.png)
 
@@ -203,7 +209,7 @@ https://<your-project-ref>.supabase.co
 |---|---|
 | Sign up | Created a Supabase account and organization |
 | Project | Created a new Supabase project with a PostgreSQL database |
-| SQL | Ran SQL to create the `contract_risks` table and insert 10 rows |
+| SQL | Ran SQL to create the `playbook` table and insert 12 rows (NDA, MSA, Lease) |
 | Verify | Confirmed data in the Table Editor |
 | API Key | Copied the `service_role` secret key |
 | URL | Copied the Supabase project URL |

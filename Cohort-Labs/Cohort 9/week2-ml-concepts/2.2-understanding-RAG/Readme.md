@@ -63,7 +63,7 @@ These two pipelines run separately. The ingestion happens once. The retrieval ha
 
 ✅ **A sample contract (Docx)** — [Download the contract in Docx format](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQAbCBMxqrFrT6hzD6t9oCdpAR8pdsHtVaZf2O5HiyGq5jY?e=4s3M8D)
 
-✅ **n8n Workflow file** — [Download the pre-built workflow JSON here](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQA5OM4afrVkT6IPOVS7Tt1oAdqHaDatGQNsGPHzQDXwwus?e=Wue478) if you'd like to import it instead of building from scratch.
+
 
 ---
 
