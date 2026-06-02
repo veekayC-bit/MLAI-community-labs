@@ -1,406 +1,126 @@
-# Building an AI Contract Intelligence Agent with Azure AI Foundry
+# Build, Deploy & Evaluate Your First AI Agent in Azure AI Foundry
 
-## Prerequisites — Download These Files Before Starting
+![image](./images/bannero.png)
 
-Download the following files **before** you begin the lab steps. Click each link to open and download from SharePoint.
+> **What you'll build:** A smart contract-review agent that lives inside Microsoft Teams and Microsoft 365 Copilot — no code required. By the end of this lab you'll know how to create, configure, test, publish, monitor, and continuously evaluate an AI agent using Azure AI Foundry.
 
-**Knowledge base files** — upload these to your agent in Step 9:
+---
+
+## Who This Lab Is For
+
+| You are… | You'll get… |
+|---|---|
+| A developer building enterprise AI apps | A complete, production-ready deployment pipeline |
+| A business analyst exploring AI agents | A step-by-step walkthrough without a single line of code |
+| An AI/ML enthusiast learning Azure | Hands-on experience with Foundry IQ, memory stores, and continuous eval |
+
+No prior Azure experience required. If you can click a button, you can finish this lab.
+
+---
+
+## Prerequisites
+
+Before we start, make sure you have:
+
+- [ ] An **Azure subscription** with Azure AI Foundry access
+- [ ] The **New Foundry experience** enabled (we'll check this in Step 1)
+- [ ] All **knowledge base files** downloaded (see table below) and saved to your desktop
+- [ ] All **test contract files** downloaded (see table below) — you'll use these in the testing section
+- [ ] A **Microsoft Teams** account (for the deployment section)
+
+> **Tip:** Keep this guide open in one tab and Azure AI Foundry open in another. You'll be switching between them.
+
+### Knowledge Base Files
+
+Download these and upload them to your agent in **Part 3 (File Search)**:
 
 | File | Download Link | Purpose |
 |---|---|---|
 | `approved-clause-library.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQC2ASx4HjMKRqsgo7M0Ez5gAbqx_jxrBg8rRuPV9V6Sqlw?e=STefps) | Library of pre-approved legal clause language |
 | `company-procurement-policy.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBLGziPLVuUS7zZKZQWtvX-AaLTXWYc7ToGycZRePRpD5I?e=X2JAya) | Internal standards for acceptable contract terms |
 
-**Test contracts** — use these to query your agent in Step 13:
+### Test Contracts
+
+Download this and use it to query your agent in **Part 7 (Testing)**:
 
 | File | Download Link | Purpose |
 |---|---|---|
-| `sample-vendor-agreement.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBx9d3XaHxeSbdXQ-Gf7IVfATeanSERWgBzWlB2I8l2b4s?e=CpREVd) | A sample vendor contract with intentional risk clauses for analysis |
-| `sample-nda-contract.pdf` | [Download](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=6M7I04) | A sample NDA contract to test the agent's clause extraction and risk detection |
+| `Aurelios-System-NDA.pdf` | [Download](https://pragyaallc-my.sharepoint.com/my?id=%2Fpersonal%2Fsachin%5Fparmar%5Flegalgraph%5Fai%2FDocuments%2FCohort%20%2D%209%2Fweek%20%2D%201%2FAurelios%20System%20NDA%201%2Epdf&parent=%2Fpersonal%2Fsachin%5Fparmar%5Flegalgraph%5Fai%2FDocuments%2FCohort%20%2D%209%2Fweek%20%2D%201&ga=1) | Sample NDA contract to test clause extraction and risk detection |
 
 ---
 
-## Table of Contents
+## What We're Building
 
-- [Building an AI Contract Intelligence Agent with Azure AI Foundry](#building-an-ai-contract-intelligence-agent-with-azure-ai-foundry)
-  - [Prerequisites — Download These Files Before Starting](#prerequisites--download-these-files-before-starting)
-  - [Table of Contents](#table-of-contents)
-  - [1. The Problem — Why Contract Review is Broken](#1-the-problem--why-contract-review-is-broken)
-    - [The Hidden Cost of Manual Review](#the-hidden-cost-of-manual-review)
-  - [2. The Solution — What We Are Building](#2-the-solution--what-we-are-building)
-    - [What Makes This Different from Just Using ChatGPT?](#what-makes-this-different-from-just-using-chatgpt)
-  - [3. Key Concepts You Need to Know First](#3-key-concepts-you-need-to-know-first)
-    - [3.1 What is a Large Language Model (LLM)?](#31-what-is-a-large-language-model-llm)
-    - [3.2 What is an AI Agent?](#32-what-is-an-ai-agent)
-    - [3.3 What is Retrieval-Augmented Generation (RAG)?](#33-what-is-retrieval-augmented-generation-rag)
-    - [3.4 What is Vectorization?](#34-what-is-vectorization)
-    - [3.5 What is Azure AI Foundry?](#35-what-is-azure-ai-foundry)
-  - [4. Architecture Overview — How It All Fits Together](#4-architecture-overview--how-it-all-fits-together)
-  - [5. Step-by-Step Lab Walkthrough](#5-step-by-step-lab-walkthrough)
-    - [Step 1 — Go to Azure AI Foundry](#step-1--go-to-azure-ai-foundry)
-    - [Step 2 — Create a New Project and Resource](#step-2--create-a-new-project-and-resource)
-    - [Step 3 — Navigate to the Agent Builder](#step-3--navigate-to-the-agent-builder)
-    - [Step 4 — Create and Name Your Agent](#step-4--create-and-name-your-agent)
-    - [Step 5 — Configure the Model](#step-5--configure-the-model)
-    - [Step 6 — Understand Voice Mode](#step-6--understand-voice-mode)
-    - [Step 7 — Write the Agent Instructions (System Prompt)](#step-7--write-the-agent-instructions-system-prompt)
-    - [Step 8 — Add Tools to Your Agent](#step-8--add-tools-to-your-agent)
-    - [Step 9 — Upload Contract Knowledge Files](#step-9--upload-contract-knowledge-files)
-    - [Step 10 — Connect Company Knowledge (Azure Foundry IQ)](#step-10--connect-company-knowledge-azure-foundry-iq)
-    - [Step 11 — Set Up Memory for Your Agent](#step-11--set-up-memory-for-your-agent)
-    - [Step 12 — Save and Test Your Agent](#step-12--save-and-test-your-agent)
-    - [Step 13 — Attach a Real Contract and Query It](#step-13--attach-a-real-contract-and-query-it)
-    - [Step 14 — Publish the Agent](#step-14--publish-the-agent)
-    - [Step 15 — Deploy to Microsoft Teams and Microsoft 365](#step-15--deploy-to-microsoft-teams-and-microsoft-365)
-  - [6. What Happens Behind the Scenes — The Full Flow](#6-what-happens-behind-the-scenes--the-full-flow)
-  - [7. Real-World Business Impact](#7-real-world-business-impact)
-  - [8. Summary and Key Takeaways](#8-summary-and-key-takeaways)
-  - [9. Prereq Files — Sample Contracts for Testing](#9-prereq-files--sample-contracts-for-testing)
+We're creating a **Contract Review Agent** — an AI agent that:
+
+- Reads uploaded contract documents
+- Identifies risky clauses and red flags
+- Answers follow-up questions using memory of past conversations
+- Searches the web for up-to-date legal context
+- Runs inside Microsoft Teams so your whole team can use it
+
+Think of it as having a junior legal analyst available 24/7, right inside the tools your team already uses.
 
 ---
 
-## 1. The Problem — Why Contract Review is Broken
+## Part 1 — Enable the New Azure AI Foundry Experience
 
-Every organization — whether a startup or a Fortune 500 company — deals with legal contracts constantly. Think about:
+The New Foundry is Microsoft's latest unified hub for building, deploying, and managing AI applications. It brings together model selection, agent tooling, evaluation, and monitoring all under one roof.
 
-- **Vendor Agreements** — contracts with your suppliers and service providers
-- **NDAs (Non-Disclosure Agreements)** — documents that protect confidential information
-- **Procurement Contracts** — agreements when your company buys goods or services
-- **SaaS Agreements** — terms of service for software tools your company subscribes to
+**Steps:**
 
-### The Hidden Cost of Manual Review
+1. Navigate to [https://ai.azure.com](https://ai.azure.com) and sign in with your Azure account
+2. In the top banner or settings, look for the toggle that says **"New Foundry"**
+3. Click it to enable the New Foundry interface
 
-When these contracts land on a desk, here is what usually happens:
+![Enable New Foundry](images/1.png)
 
-| Task | Time Spent | Risk |
-|---|---|---|
-| Reading and understanding the document | 1–3 hours per contract | Easy to miss buried clauses |
-| Identifying risky or unusual clauses | 30–90 minutes | Depends heavily on reviewer experience |
-| Comparing against company legal standards | 45–60 minutes | Often skipped due to time pressure |
-| Writing a summary for stakeholders | 30 minutes | Inconsistent quality |
-| Answering follow-up questions | Ongoing back-and-forth | Slow decision-making |
+> **Why does this matter?** The New Foundry gives you access to the latest agent builder, Foundry IQ, continuous evaluation, and the Teams/Copilot publishing features we'll use throughout this lab. The classic experience doesn't have all of these.
 
-A mid-size organization handles **hundreds of contracts per month**. That means:
-
-- **Thousands of hours** spent on manual review
-- **High legal costs** if external lawyers are involved
-- **Delayed business decisions** waiting for legal sign-off
-- **Human error** — even experienced reviewers miss things when fatigued
-- **Inconsistency** — two reviewers may assess the same clause very differently
-
-This is the problem we are solving.
+Once enabled, you should see a refreshed sidebar with options like **Agents**, **Models**, **Monitoring**, and **Evaluation**.
 
 ---
 
-## 2. The Solution — What We Are Building
+## Part 2 — Create Your Agent
 
-We are building an **AI-powered Contract Intelligence Agent** using **Azure AI Foundry**.
+Now for the fun part — let's bring our agent to life.
 
-Think of this agent as a tireless, highly knowledgeable legal assistant that:
+### 2.1 Open the Agent Builder
 
-- Reads any uploaded contract in seconds
-- Automatically summarizes it in plain language
-- Highlights risky or non-standard clauses with explanations
-- Compares the contract against your company's approved legal standards
-- Suggests safer alternative language for problematic clauses
-- Answers your team's questions conversationally — just like chatting with a colleague
+1. Now click **Create Agents**
+2. Click the **"+ Create an agent"** button in the top right
 
-### What Makes This Different from Just Using ChatGPT?
+![Enable New Foundry](images/1.png)
 
-Great question. A general-purpose chatbot does not know:
-- Your company's specific legal policies
-- Your approved clause library
-- Your past contract history
-- Your internal compliance requirements
+3. A dialog will appear — give your agent a clear, descriptive name
 
-Our agent is **grounded in your company's own knowledge**. It uses your uploaded documents as its source of truth, so every answer is relevant and specific to your organization — not generic internet knowledge.
+   > **Naming tip:** Use something like `Contract-Review-Agent` or `Legal-Clause-Analyzer`. Avoid generic names like "MyAgent" because if you deploy this to Teams, this name is what your colleagues will see.
+
+4. Click **Create**
+
+![Create an Agent](images/2.png)
+
+You'll be redirected to the **Agent Configuration page** — this is your agent's control center. Everything you do in the next few steps happens here.
 
 ---
 
-## 3. Key Concepts You Need to Know First
+### 2.2 Select Your Model
 
-Before touching the platform, let us make sure everyone understands the technology powering this solution. Do not skip this section — these concepts will make every step in the lab feel logical rather than magical.
+The first thing you'll configure is the **underlying AI model** that powers your agent's reasoning.
 
----
+![Select Model](images/3.png)
 
-### 3.1 What is a Large Language Model (LLM)?
-
-A **Large Language Model** is a type of artificial intelligence trained on enormous amounts of text — books, articles, websites, legal documents, and more. Through this training, it learns how language works: grammar, meaning, reasoning, and domain knowledge.
-
-**Simple analogy:** Imagine an expert who has read every legal textbook, contract template, and law review article ever published. When you ask them a question, they draw on all that reading to give you an informed answer.
-
-Popular LLMs include **GPT-4o** (from OpenAI), **Claude** (from Anthropic), and **Llama** (from Meta). Azure AI Foundry gives you access to all of these through a single platform.
-
-**Key capability for our use case:** LLMs can read a contract you give them, understand what it says, and respond to questions about it intelligently.
+For our contract review agent, **select `gpt-4.1`**. Legal contracts are complex and you want the most capable model reading through them.
 
 ---
 
-### 3.2 What is an AI Agent?
+### 2.3 Write Your Agent Instructions
 
-An **AI Agent** goes one step beyond a simple chatbot. While a basic chatbot just answers questions, an AI agent can:
+This is the most important configuration step. The **instructions** are the system prompt — they tell the agent who it is, what its job is, and how it should behave.
 
-- **Take actions** — search the web, read files, call external systems
-- **Use tools** — calculators, databases, document readers
-- **Remember context** — keep track of what was said earlier in a conversation
-- **Follow a role** — behave according to a specific persona or set of rules you define
+![Agent Instructions](images/4.png)
 
-**Simple analogy:** A chatbot is like a reference book — it answers questions. An AI agent is like a skilled employee — it reads your documents, uses the right tools, follows your company's policies, and gets the job done.
-
-In this lab, we are building an agent whose job is contract analysis.
-
----
-
-### 3.3 What is Retrieval-Augmented Generation (RAG)?
-
-This is one of the most important concepts in enterprise AI today. Let us break it down:
-
-- **Retrieval** — When you ask a question, the system first *searches* your uploaded documents to find the most relevant passages.
-- **Augmented** — Those retrieved passages are added to your question as extra context.
-- **Generation** — The LLM then *generates* a response using both your question and the retrieved context.
-
-**Why does this matter?**
-
-LLMs are trained on public data up to a certain point in time. They do not know:
-- Your specific NDA template
-- Your company's payment terms policy
-- The specific contract you just uploaded
-
-RAG solves this by dynamically feeding your private documents into the model at query time. The model does not "memorize" your documents — it retrieves and reads the relevant parts each time you ask something.
-
-**Simple analogy:** You are taking an open-book exam. RAG is the ability to quickly flip to the right page of the right book before writing your answer. Without RAG, the model would have to answer from memory alone.
-
----
-
-### 3.4 What is Vectorization?
-
-When you upload a document to the agent, Azure AI Foundry does not store it as plain text that a human would read. It converts the text into **vectors** — lists of numbers that capture the *meaning* of each piece of text.
-
-**Why numbers?** Computers can compare numbers very fast. By converting text to numbers, the system can instantly find which parts of your documents are most relevant to a question — even if the question uses different words than the document.
-
-**Example:**
-- Your contract says: *"Payment shall be remitted within thirty (30) calendar days."*
-- You ask: *"What are the payment timelines?"*
-- These two phrases use different words, but their **meaning** is similar — so their vectors are close together, and the system finds the match.
-
-**Simple analogy:** Imagine every sentence in your documents is placed on a giant map, where sentences with similar meanings are placed close together. When you ask a question, the system drops a pin on the map and picks up everything nearby.
-
-This process is called **embedding**, and it happens automatically when you upload files to Azure AI Foundry.
-
----
-
-### 3.5 What is Azure AI Foundry?
-
-**Azure AI Foundry** (previously known as Azure AI Studio) is Microsoft's enterprise platform for building, deploying, and managing AI-powered applications.
-
-Think of it as a complete workshop for AI development:
-
-| Feature | What It Does |
-|---|---|
-| Model Catalog | Access to dozens of LLMs (GPT-4o, Llama, Mistral, etc.) |
-| Agent Builder | Visual interface to build AI agents without coding |
-| File Upload & Vectorization | Upload your documents; Foundry handles the embedding automatically |
-| Tool Integration | Web search, code interpreter, file reading, and more |
-| Memory Store | Lets the agent remember information across conversations |
-| Publishing | Deploy your agent to Teams, Microsoft 365, or via API |
-| Security & Compliance | Enterprise-grade data privacy, Azure AD integration |
-
-**Key advantage for non-technical users:** Azure AI Foundry provides a visual, no-code interface for building agents. You do not need to write a single line of code to complete this lab.
-
----
-
-## 4. Architecture Overview — How It All Fits Together
-
-Here is a simple diagram of what we are building and how the pieces connect:
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                      USER / BUSINESS TEAM                       │
-│         (Legal, Procurement, Operations Staff)                  │
-└────────────────────────────┬────────────────────────────────────┘
-                             │  Uploads contract + asks a question
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    AZURE AI FOUNDRY AGENT                       │
-│                                                                 │
-│  ┌─────────────────┐    ┌──────────────────┐                   │
-│  │  System Prompt  │    │   Uploaded Tools │                   │
-│  │  (Instructions) │    │  (Web Search,    │                   │
-│  │                 │    │   File Reader)   │                   │
-│  └────────┬────────┘    └────────┬─────────┘                   │
-│           │                      │                             │
-│           └──────────┬───────────┘                             │
-│                      ▼                                          │
-│           ┌──────────────────────┐                             │
-│           │   Large Language     │                             │
-│           │   Model (LLM)        │                             │
-│           │   e.g. GPT-4o        │                             │
-│           └──────────┬───────────┘                             │
-│                      │                                          │
-│           ┌──────────▼───────────┐                             │
-│           │   RAG Engine         │                             │
-│           │   (Retrieves from    │                             │
-│           │    your documents)   │                             │
-│           └──────────┬───────────┘                             │
-└──────────────────────┼──────────────────────────────────────────┘
-                       │ Searches
-          ┌────────────▼────────────────────────────┐
-          │         KNOWLEDGE BASE                  │
-          │                                         │
-          │  ┌──────────────┐ ┌──────────────────┐  │
-          │  │ Company NDA  │ │  Approved Clause  │  │
-          │  │  Template    │ │     Library       │  │
-          │  └──────────────┘ └──────────────────┘  │
-          │  ┌──────────────┐ ┌──────────────────┐  │
-          │  │  Procurement │ │  Compliance       │  │
-          │  │  Policy Doc  │ │  Standards        │  │
-          │  └──────────────┘ └──────────────────┘  │
-          └─────────────────────────────────────────┘
-                       │
-          ┌────────────▼────────────────────────────┐
-          │         RESPONSE TO USER                │
-          │  - Contract Summary                     │
-          │  - Risk Flags with Explanations         │
-          │  - Clause Comparison                    │
-          │  - Safer Recommendations                │
-          └─────────────────────────────────────────┘
-```
-
----
-
-## 5. Step-by-Step Lab Walkthrough
-
-Now let us build it. Follow each step carefully.
-
----
-
-### Step 1 — Go to Azure AI Foundry
-
-Open your browser and navigate to the **[Azure AI Foundry portal](https://ai.azure.com)**.
-
-**What you are looking at:** This is Microsoft's dedicated platform for building AI solutions. It is separate from the general Azure Portal (though they are connected). You will see a clean dashboard designed specifically for AI projects.
-
-**Tip** Think of this portal as the "control room" for your AI system. Everything you need — models, agents, data, deployment — is managed from here.
-
----
-
-### Step 2 — Create a New Project and Resource
-
-Click **"Create a new"** 
-
-![images](./images/1.png)
-
-You will be guided through a setup wizard:
-
-1. **Select the resource type** — Choose **"Microsoft Foundry Resources"** (the default option). This is the recommended configuration that bundles all the services you need together.
-
-2. Click **"Next"** to proceed.
-
-![images](./images/2.png)
-
-3. **Fill in the required details:**
-   - **Project Name** — Give your project a clear, descriptive name. Example: `ContractIntelligence-Lab` or `LegalAI-Agent`
-   - **Resource Group** — This is an Azure organizational container. Think of it as a folder that holds all the cloud services for this project together. Select an existing one or create a new one.
-   - **Region** — Choose the Azure region closest to your organization (this affects performance and data residency compliance).
-
-**Why does this matter?** Your project is the logical container for everything — your agent, your documents, your model deployments. Giving it a clear name and organizing it properly makes team collaboration and cost tracking much easier.
-
-Click through the remaining wizard steps and click **"Create"**. Azure will now provision your resources — this may take 1–2 minutes.
-
-![images](./images/3.png)
-
----
-
-### Step 3 — Navigate to the Agent Builder
-
-Once your project is created and you are inside the project workspace:
-
-1. In the left navigation panel, look for **"Agents"**
-2. Click on it
-
-You will land on the Agents section, which is a visual no-code environment for building AI agents.
-
-![images](./images/4.png)
-
-**What is the Agent Builder?** It is a drag-and-configure interface where you assemble your AI agent by selecting a model, writing instructions, attaching tools, and uploading documents — all without writing code.
-
----
-
-### Step 4 — Create and Name Your Agent
-
-Click **"New Agent"**, then **"Create New Agent"**.
-
-![images](./images/5.png)
-
-A form will appear asking you to:
-
-- **Provide a name for your agent** — Be descriptive. Example: `Contract-Intelligence-Agent` or `Legal-Review-Assistant`
-
-![images](./images/4.png)
-
-**Why naming matters:** When you later deploy this agent to Microsoft Teams or publish it via API, this name is what your team sees. A clear name sets proper expectations about what the agent does.
-
----
-
-### Step 5 — Configure the Model
-
-The first configuration section is **Model Selection**.
-
-Here you choose which **Large Language Model** will power your agent's reasoning.
-
-**What to know:**
-- Azure AI Foundry gives you access to models from multiple providers: OpenAI (GPT-4o, GPT-4 Turbo), Meta (Llama), Mistral, and more
-- **Each model must be "deployed" before you can use it** — deployment means Azure has reserved the computing resources needed to run that model for your organization
-- You can only select models that have already been deployed in your Azure environment
-
-**Which model should you choose?** For contract analysis, you want a model that:
-- Has a large **context window** (can read long documents without losing information)
-- Is strong at reasoning and following instructions
-- Is optimized for document understanding
-
-**GPT-4o** is an excellent choice for this use case — it handles long legal documents well and follows complex instructions reliably.
-
-**Simple analogy:** Choosing a model is like choosing which expert to assign to a task. Different experts have different strengths, costs, and speed. For contract review, you want your best, most thorough expert — not the fastest one.
-
-![alt text](./images/7.png)
-
----
-
-### Step 6 — Understand Voice Mode
-
-Below the model selection you will see a **Voice Mode** toggle.
-
-**What is Voice Mode?**
-If enabled, your agent can accept **spoken questions** and respond with **synthesized speech** — essentially turning your contract agent into a voice-powered assistant.
-
-**When is this useful?**
-- Executives reviewing contracts while commuting
-- Accessibility use cases for users who prefer audio
-- Hands-free operation scenarios
-
-**For this lab:** You can leave Voice Mode disabled. It is not required for our core contract intelligence functionality. But it is good to know this capability exists for future enhancements.
-
-![alt text](./images/8.png)
-
----
-
-### Step 7 — Write the Agent Instructions (System Prompt)
-
-This is arguably the **most important step** in building your agent. The **Instructions** field — also called the **System Prompt** — is where you define the agent's personality, role, behavior, and rules.
-
-**What is a System Prompt?**
-Think of it as the job description and operating manual for your AI employee. Before the agent responds to any user, it reads these instructions and operates within the boundaries you define.
-
-**For our Contract Intelligence Agent, your instructions should tell the agent:**
-
-- What its role is ("You are an expert contract analyst...")
-- What it should do when a contract is uploaded ("Summarize the document, identify risky clauses...")
-- What tone to use ("Be professional and concise...")
-- What to prioritize ("Always flag payment terms, liability caps, termination clauses, and IP ownership...")
-- What it should NOT do ("Do not provide definitive legal advice; recommend consulting a qualified attorney for final decisions...")
-
-![alt text](./images/9.png)
-
-**Example system prompt you can use:**
+Click inside the **Instructions** box and paste something like this:
 
 ```
 You are an advanced AI Contract Intelligence Agent designed to help legal, procurement, and compliance teams analyze contracts.
@@ -454,334 +174,457 @@ Your responsibilities:
 If the uploaded file is not a contract, politely inform the user.
 ```
 
-**How to optimize your instructions:** You will notice a **pen icon** next to the Instructions field. Clicking it opens an AI-assisted prompt optimizer — it can help you refine and improve your instructions using best practices. Use it to iterate and strengthen your prompt.
-
-**Key insight:** The quality of your agent's output is directly tied to the quality of your instructions. Vague instructions produce vague answers. Specific, well-structured instructions produce precise, reliable analysis.
+> **Why instructions matter:** The instructions are what separate a generic chatbot from a specialized agent. Be specific about the role, the task, and the expected output format. The more precise your instructions, the more consistent your agent's behavior.
 
 ---
 
-### Step 8 — Add Tools to Your Agent
+## Part 3 — Add Tools to Your Agent
 
-The **Tools** section is where you extend your agent's capabilities beyond just answering questions.
+Tools are what make your agent powerful beyond just answering questions. They let the agent take actions, search information, and work with files.
 
-**What are Tools in AI Agents?**
-Tools are capabilities the agent can actively *use* to gather information or take actions. Instead of only relying on its training data, the agent can call upon tools to get fresh, specific, or external information.
+### 3.1 Upload a Knowledge Base File (File Search)
 
-**Default tool — Web Search:**
-By default, Azure AI Foundry enables a **Web Search** tool. This allows the agent to search the internet for up-to-date legal information — for example, looking up recent changes to regulations or verifying standard industry contract terms.
+The **File Search** tool lets your agent read and reference documents you upload. This is perfect for our use case — the agent will use your uploaded contract as its primary source of truth.
 
-**How to explore additional tools:**
-Click **"Browse Tools"** to see the full list of available pre-built tools. These may include:
-- File reader / document parser
-- Code interpreter (for calculations)
-- Custom API connectors
-- Azure Cognitive Search integrations
+![Upload File](images/5.png)
 
-**For this lab:** We will keep the default web search tool enabled and proceed to the most critical tool configuration — uploading your knowledge files.
+**Steps:**
 
----
+1. In the **Tools** section
+2. Select **"Upload File"** from the list
+3. A file upload panel will appear 
+4. Upload the knowledge base file you downloaded in the prerequisites (the one from the *"Knowledge Base Files"* section of the course) 
 
-### Step 9 — Upload Contract Knowledge Files
+![Upload File](images/6.png)
 
-![alt text](./images/10.png)
+5. Wait for the upload to process — you'll see a green checkmark when it's ready click on attach button
 
-This is where RAG comes to life.
+![Upload File](images/7.png)
 
-Within the **Tools** section, find the **"Upload File"** option and add your three pre-prepared knowledge documents.
-
-**What are these files?**
-These are sample documents I have prepared that represent your company's legal standards. You can download them from the prerequisites section at the bottom of this lesson. They typically include:
-
-1. **Company NDA Template** — Your approved standard Non-Disclosure Agreement
-2. **Approved Clause Library** — A collection of pre-approved, legally vetted clause language for common contract sections
-3. **Compliance and Risk Policy Document** — Your internal standards for what constitutes acceptable and unacceptable contract terms
-
-![alt text](./images/12.png)
-
-**What happens when you upload these files?**
-
-This is where **vectorization** happens automatically:
-
-1. Azure AI Foundry reads your uploaded documents
-2. It breaks them into small, meaningful chunks (paragraphs or sections)
-3. Each chunk is converted into a vector (a list of numbers capturing its meaning)
-4. These vectors are stored in a **vector database** inside your project
-
-When a user later uploads a contract and asks a question, the RAG engine searches this vector database to find the most relevant chunks from your knowledge documents, and feeds them to the LLM as context — enabling the agent to compare the uploaded contract against your company standards.
-
-**Simple analogy:** You are loading your agent's brain with your company's specific legal knowledge. It will use this knowledge as the reference point for all its analysis.
-
-**Important:** Larger, more comprehensive knowledge files lead to better, more specific answers. The quality of your knowledge base directly impacts the quality of your agent.
-
-![alt text](./images/11.png)
+> **What happens under the hood:** Azure AI Foundry automatically chunks your document into smaller pieces and creates vector embeddings — essentially a searchable index of your document's meaning. When the agent needs to answer a question, it retrieves the most relevant chunks from your file rather than reading the whole thing from scratch every time. This makes responses both faster and more grounded in your actual document.
 
 ---
 
-### Step 10 — Connect Company Knowledge (Azure Foundry IQ)
+### 3.2 Explore Other Available Tools
 
-For teams that want to go beyond uploaded files and connect the agent to **live company data**:
+While you're in the Tools section, let's take a quick tour of what else is available:
 
-Azure AI Foundry provides a feature called **Azure Foundry IQ** (also referred to as Connected Data Sources) that allows you to link the agent to:
+![Upload File](images/8.png)
 
-- **SharePoint** — Connect your legal document libraries directly
-- **Azure Blob Storage** — Automatically sync contracts stored in cloud storage
-- **OneDrive** — Access documents from your organization's OneDrive
-- **Azure AI Search** — Connect to enterprise-scale indexed document repositories
-- **SQL Databases** — Pull structured contract metadata
+**Built-in tools you'll see:**
 
-**Why this matters for enterprise use:**
-Instead of manually uploading files each time your standards update, you can point the agent at a live data source. When your legal team updates the approved clause library in SharePoint, the agent automatically has access to the latest version.
+| Tool | What it does |
+|---|---|
+| **File Search** | Searches uploaded documents (what we just added) |
+| **Web Search** | Lets the agent search Bing for real-time information |
+| **Code Interpreter** | Runs Python code — great for data analysis, calculations, and generating charts |
 
-**For this lab:** We are working with manually uploaded files, which is sufficient for learning the concepts. In a production deployment, you would configure these live connections.
+**To find even more tools:**
+- Click **"Browse more"** in the Tools section
 
-![alt text](./images/13.png)
+![Upload File](images/8.png)
 
----
+- You'll find integrations like **Azure Functions**, **Logic Apps connectors**, **custom API tools**, and more
 
-### Step 11 — Set Up Memory for Your Agent
+![Upload File](images/9.png)
 
-Click on **"Memory"** and then **"Create Memory Store"**.
-
-**What is Agent Memory?**
-
-By default, each conversation with an AI agent is **stateless** — meaning the agent forgets everything once the conversation ends. The next conversation starts completely fresh.
-
-A **Memory Store** changes this. It allows the agent to:
-- Remember facts from past conversations
-- Recall decisions made about specific contracts
-- Build a history of interactions with a user or team
-- Learn organizational preferences over time
-
-**Types of memory useful for contract agents:**
-- *Session memory* — Remembers the current conversation thread
-- *Long-term memory* — Persists information across multiple conversations
-- *Entity memory* — Tracks specific entities like vendor names, contract numbers, or recurring risk patterns
-
-**Business value:** Imagine an agent that remembers that your company never agrees to liability caps below $2 million, or that Vendor X has had three risky contracts flagged in the past. Over time, this memory makes the agent more and more valuable as it learns your organization's specific patterns and preferences.
-
-**How to set it up:** Follow the "Create Memory Store" wizard, give it a name, and select the storage location (an Azure storage account). Once created, link it to your agent.
-
-![alt text](./images/15.png)
+> **For this lab:** We're keeping it simple with just File Search. But in a real production agent, you might combine File Search + Web Search so the agent can reference your internal documents *and* check current legal regulations online.
 
 ---
 
-### Step 12 — Save and Test Your Agent
+## Part 4 — Connect Foundry IQ (Knowledge Graph)
 
-Once you have configured:
-- A model
-- Instructions
-- Tools
-- Knowledge files
-- Memory store
+Foundry IQ is Azure AI Foundry's **knowledge graph and enterprise data connection layer**. This is one of the most powerful — and most underused — features in the platform. Let's break it down.
 
-Click **"Save"** to finalize your agent configuration.
+![Foundry IQ](images/10.png)
 
-You will now be in the **Test Console** — a built-in chat interface where you can interact with your agent directly before sharing it with your team.
+### What is Foundry IQ?
 
-**This is your quality assurance step.** Before deploying to your organization, always test:
-- Does the agent follow its instructions?
-- Does it reference your uploaded knowledge files correctly?
-- Does it correctly identify risk clauses?
-- Are the summaries accurate and readable?
+Foundry IQ sits between your agent and your organization's data. Instead of just searching uploaded files, Foundry IQ can:
 
+- Connect to **SharePoint, OneDrive, and Microsoft Graph** data
+- Index your organization's **Teams conversations, emails, and documents**
+- Create a **semantic knowledge graph** — meaning it understands relationships between concepts, not just keyword matches
+- Respect your organization's **permissions model** (users only see data they're already authorized to access)
+
+Note : We have alredy add files in tools so we ont requte it 
 
 ---
 
-### Step 13 — Attach a Real Contract and Query It
+## Part 5 — Add Memory to Your Agent
 
-In the test console, you can attach a contract document directly to your message.
+Without memory, every conversation your agent has starts from zero. The user uploads a contract, gets feedback, asks a follow-up question — and the agent has forgotten everything from two messages ago. Memory fixes this.
 
-**Try this with the sample NDA provided in the prerequisites:**
+### 5.1 Create a Memory Store
 
-1. Click the attachment icon in the chat input
-2. Upload the sample NDA contract file
-3. Type a query such as:
-   - *"Summarize this contract and identify the top 3 risks."*
-   - *"Does the liability clause meet our company standards?"*
-   - *"What are the payment terms in this agreement?"*
-   - *"Are there any clauses that would be unusual for a standard NDA?"*
+1. In the **Memory** section of the agent configuration page, click **"+ Add"**
 
-![alt text](./images/16.png)
+![Foundry IQ](images/11.png)
+
+2. Click **"Create memory store"**
+
+![Foundry IQ](images/12.png)
 
 
-**What happens behind the scenes:**
+### How Memory Stores Work
 
-1. Your message and the attached contract are sent to the agent
-2. The agent reads your instructions (system prompt) to understand its role
-3. The RAG engine searches your knowledge base for relevant company policies
-4. The LLM combines: your question + the contract content + retrieved company standards
-5. The agent generates a structured response with summary, risks, and recommendations
+A memory store is essentially a **persistent conversation database** tied to your agent. Here's what it does:
 
-**Default behavior:** Even without a specific query, the agent will automatically detect that a contract was uploaded and begin its analysis — surfacing risk factors immediately based on its instructions.
+**Short-term memory (within a session):**
+The agent remembers everything said in the current conversation — the contract you uploaded, the questions you asked, the clauses it flagged. This is standard for all LLMs.
 
-**What great output looks like:**
-```
-Contract Summary: This NDA between [Party A] and [Party B] establishes 
-mutual confidentiality obligations for a period of 3 years...
+**Long-term memory (across sessions):**
+With a memory store, the agent can remember things *between* separate conversations. For example:
+- A user's preferences ("Always flag indemnification clauses in red")
+- Facts established in previous conversations ("This vendor's contracts always have aggressive IP clauses")
+- User-specific context ("This user is from the legal team")
 
-Risk Flags Identified:
-1. [HIGH] Clause 4.2 — Unlimited liability with no cap specified. 
-   Company standard requires a minimum liability cap of $2M.
-   Recommendation: Add: "Liability shall not exceed $2,000,000 USD."
+**How it's stored:**
+Memory is stored as structured records in your memory store backend. When a new conversation starts, the agent performs a semantic search over stored memories to retrieve relevant context. This happens automatically — you don't need to do anything special.
 
-2. [MEDIUM] Clause 7.1 — Governing law set to [Foreign Jurisdiction].
-   Standard: Agreements should default to [Your State/Country] law.
-   
-3. [LOW] Clause 2.3 — Confidentiality period is 5 years.
-   Company standard is 3 years. Consider negotiating to align.
-```
+> **Privacy note:** Memory stores respect your Azure tenant's data residency and privacy settings. Data stored in your memory store stays within your Azure subscription.
 
 ---
 
-### Step 14 — Publish the Agent
+## Part 6 — Configure Guardrails
 
-When you are satisfied with your testing, click **"Publish"**.
+Your agent comes with **built-in safety guardrails** out of the box — these are content filters and behavioral constraints that prevent the agent from generating harmful, inappropriate, or off-topic responses.
 
-Publishing makes your agent available beyond the test console. You have two primary distribution options:
+![Guardrails](images/9.png)
 
-**Option A: API Endpoint**
-Azure AI Foundry generates a unique **API endpoint** — a web address that your engineering or IT team can integrate with:
-- Your internal legal management system
-- Your procurement portal
-- Your company intranet
-- Any web or mobile application
+### What the Default Guardrails Cover
 
-Your engineering team simply sends contract text to this endpoint and receives structured analysis back. They do not need to know anything about AI — it is just another web service they call.
+- **Hate speech and violence** — The agent won't generate content that promotes harm
+- **Self-harm content** — Filtered by default
+- **Off-topic queries** — You can configure the agent to stay focused on its intended task
+- **Confidential data leakage** — Prevents the agent from inadvertently echoing back sensitive information in unexpected ways
 
-**Option B: Direct Platform Publishing**
-Deploy the agent directly to **Microsoft Teams** or **Microsoft 365** — no engineering team required.
+### Customizing Guardrails
 
+In the **Guardrails** section you can:
 
-![alt text](./images/17.png)
+1. **Adjust sensitivity levels** — Set how aggressively each category is filtered (Low / Medium / High)
+2. **Add custom topics to block** — e.g., "Do not discuss competitor products"
+3. **Configure output formatting rules** — e.g., "Always respond in bullet points"
+4. **Set up groundedness checks** — This is powerful: it verifies that the agent's responses are actually supported by the source documents rather than being hallucinated
 
----
-
-### Step 15 — Deploy to Microsoft Teams and Microsoft 365
-
-For non-technical teams who want to use the agent immediately without involving IT, the Teams/365 deployment is the fastest path to value.
-
-Click **"Publish to Teams / Microsoft 365"** and fill in:
-
-1. **Agent Name** — The name your colleagues will see in Teams. Keep it clear: `Contract Review Assistant`
-
-2. **Short Description** — A brief one-line explanation: `Upload a contract and get instant risk analysis and summaries.`
-
-3. **Full Description** — A detailed explanation for users discovering the agent in the app store: `This AI agent analyzes vendor agreements, NDAs, and procurement contracts. Upload a document and ask questions to get summaries, risk flags, clause comparisons, and recommendations aligned with company legal standards.`
-
-4. **Publish Scope** — Choose **"Publish to your organization"** to make it available to all employees (or restrict to specific teams like Legal and Procurement).
-
-5. **Author** — Your name will appear here as the creator of the agent. This establishes accountability and gives users a point of contact.
-
-Once published, your colleagues will find the agent in Microsoft Teams' app catalog or in Microsoft 365 Copilot. They can start uploading contracts and getting analysis immediately — no training required.
-
-![alt text](./images/18.png)
+> **Recommendation for contract review:** Keep the default guardrails and add a custom rule like "Only answer questions related to the uploaded contract document. Politely decline off-topic requests." This keeps the agent focused and professional.
 
 ---
 
-## 6. What Happens Behind the Scenes — The Full Flow
+## Part 7 — Test Your Agent
 
-Here is the complete journey of a contract analysis request, from the moment a user uploads a file to the moment they receive a response:
+Before deploying to your whole organization, always test in the playground. This is your sandbox.
 
-```
-Step 1: User uploads NDA + types "Summarize and flag risks"
-         ↓
-Step 2: Azure AI Foundry receives the message
-         ↓
-Step 3: The contract text is extracted from the uploaded file
-         ↓
-Step 4: RAG Engine activates:
-        - The question is converted to a vector
-        - The vector database (your knowledge files) is searched
-        - Top 5 most relevant passages from your policies are retrieved
-         ↓
-Step 5: A complete prompt is assembled:
-        [System Instructions] + [User Question] + [Contract Text] 
-        + [Retrieved Policy Passages]
-         ↓
-Step 6: This assembled prompt is sent to the LLM (e.g. GPT-4o)
-         ↓
-Step 7: The LLM reads everything and generates a structured response:
-        - Summary
-        - Risk flags with severity ratings
-        - Specific clause references
-        - Company policy comparisons
-        - Safer alternative language
-         ↓
-Step 8: Response is displayed to the user in the chat interface
-         ↓
-Step 9: Memory Store records key findings for future reference
-```
+### 7.1 Run a Test Query
 
-The entire process — from upload to response — typically takes **10–30 seconds** for a standard contract, compared to hours for manual review.
+1. In the **Test** panel (usually on the right side of the agent configuration page), you'll see a chat interface
+2. Click the **attachment icon** (paperclip) to attach a contract document — use any sample contract PDF for this from preq section
+
+![Guardrails](images/13.png)
+
+3. Type the query:
+
+   ```
+   Review this contract and identify risky clauses
+   ```
+
+4. Hit **Send** and watch the agent respond
+
+
+![Guardrails](images/14.png)
 
 ---
 
-## 7. Real-World Business Impact
+## Part 8 — Save Your Agent
 
-Let us quantify what this solution delivers:
+Once you're happy with the test results, save your configuration.
 
-| Metric | Before AI Agent | After AI Agent |
+1. Click **"Save"** in the top right corner of the agent configuration page
+2. You'll see a confirmation that your agent configuration has been saved
+3. Your agent now has a stable version that you can reference, deploy, and roll back to if needed
+
+![Guardrails](images/15.png)
+
+---
+
+## Part 9 — Publish to Microsoft Teams and Microsoft 365 Copilot
+
+This is where things get exciting. You're going to take your agent from the Azure portal and put it directly inside Microsoft Teams and Microsoft 365 Copilot — the tools your team uses every day.
+
+### 9.1 Go to the Publish Section
+
+1. In the right top corner, click **"Publish"** (or look for a **"Deploy"** tab at the top of your agent page)
+2. You'll see a list of deployment targets — click on **"Teams and Microsoft 365 Copilot"**
+
+![Publish Section](images/16.png)
+
+---
+
+### 9.2 Fill in the App Details
+
+![Publish Section](images/17.png)
+
+You'll be prompted to fill in the metadata for your Teams app package:
+
+| Field | What to enter | Example |
 |---|---|---|
-| Time to review a standard NDA | 60–90 minutes | 30–60 seconds |
-| Consistency of risk identification | Varies by reviewer | Consistent every time |
-| Policy compliance checks | Often skipped | Automatic on every contract |
-| Cost of external legal review | $300–$500/hour | Dramatically reduced |
-| Turnaround for business teams awaiting sign-off | 2–5 days | Same day |
-| Scalability | Linear — hire more people | Handle 10x volume with no extra cost |
+| **App name** | The name users will see in Teams | `Contract Review Agent` |
+| **Short description** | One-line summary (shown in search results) | `AI-powered contract risk analysis` |
+| **Full description** | Detailed explanation for the app store listing | `Analyzes contracts for risky clauses, missing protections, and compliance issues using Azure AI` |
+| **Author** | Developer name or team name | `Legal Ops Team / [Your Name]` |
+| **Version** | Semantic version number | `1.0.0` |
 
-**Important disclaimer:** This agent is a **decision-support tool**, not a replacement for qualified legal counsel. It dramatically reduces the time lawyers and procurement professionals spend on routine analysis, freeing them to focus on complex negotiations and high-stakes decisions where human judgment is irreplaceable.
+Fill in all fields, then click **"Next"**.
 
----
-
-## 8. Summary and Key Takeaways
-
-Let us recap what we covered and what you built:
-
-**Concepts learned:**
-- **LLMs** — AI models trained on vast text data that understand and generate language
-- **AI Agents** — LLMs enhanced with tools, instructions, and memory to take actions
-- **RAG (Retrieval-Augmented Generation)** — Grounding AI responses in your private documents
-- **Vectorization/Embeddings** — How documents are converted to searchable numbers
-- **Azure AI Foundry** — Microsoft's enterprise platform for building and deploying AI agents
-
-**What you built:**
-- A fully configured Contract Intelligence Agent
-- Grounded in your company's legal standards
-- Capable of summarizing, risk-flagging, and answering questions about any uploaded contract
-- Deployed to Microsoft Teams for immediate team use
-
-**The business value:**
-- Hours of manual review reduced to seconds
-- Consistent, policy-aligned analysis on every contract
-- Scalable — handles hundreds of contracts without additional staff
-- Accessible to non-technical business users through familiar tools like Teams
+> **Tip:** Spend a few extra minutes on the description. When colleagues search for agents in Teams, this is what they see. A clear description drives adoption.
 
 ---
 
-## 9. Prereq Files — Sample Contracts for Testing
+### 9.3 Choose Your Audience
 
-All files are linked below. Click to download from SharePoint.
+You'll be asked who can access this agent:
 
-**Knowledge base files** — upload these in Step 9:
+- **Just me** — Only you can use it (great for testing before wider rollout)
+- **My organization** — Everyone in your Microsoft 365 tenant can find and use it
 
-| File | Download Link | Purpose |
-|---|---|---|
-| `approved-clause-library.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQC2ASx4HjMKRqsgo7M0Ez5gAbqx_jxrBg8rRuPV9V6Sqlw?e=STefps) | Library of pre-approved legal clause language |
-| `company-procurement-policy.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBLGziPLVuUS7zZKZQWtvX-AaLTXWYc7ToGycZRePRpD5I?e=X2JAya) | Internal standards for acceptable contract terms |
+For this lab, start with **"Just me"** to test it in Teams before releasing to your organization. Once you're confident, come back and change this to **"My organization"**.
 
-**Test contracts** — use these to query your agent in Step 13:
+Click **"Publish"**.
 
-| File | Download Link | Purpose |
-|---|---|---|
-| `sample-vendor-agreement.docx` | [Download](https://pragyaallc-my.sharepoint.com/:w:/g/personal/sachin_parmar_legalgraph_ai/IQBx9d3XaHxeSbdXQ-Gf7IVfATeanSERWgBzWlB2I8l2b4s?e=CpREVd) | A sample vendor contract with intentional risk clauses for analysis |
-| `sample-nda-contract.pdf` | [Download](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=6M7I04) | A sample NDA contract to test clause extraction and risk detection |
-
-Upload the knowledge base files to your agent (Step 9). Use either test contract to query the agent (Step 13).
+![Audience Selection](images/18.png)
 
 ---
 
-> **Author:** Built and maintained by the MLAI Community Labs team.
-> **Lab:** 4.1 — Azure AI Foundry Agent
-> **Cohort:** 9, Week 4 — Tools and Agents
->
-> If you complete this lab and have questions, bring them to the next cohort session or post in the community Slack channel.
+### 9.4 Your Agent Is Now Live in Copilot
+
+After publishing, Azure AI Foundry will package your agent as a Microsoft Teams app and make it available in:
+
+![Audience Selection](images/19.png)
+
+- **Microsoft 365 Copilot** — accessible via the Copilot chat interface at [microsoft365.com](https://microsoft365.com)
+- **Microsoft Teams** — as a bot/agent app your team can install
+
+---
+
+## Part 10 — Open and Test in Microsoft Teams
+
+Let's verify everything works end-to-end in the actual Teams environment.
+
+### 10.1 Open the Agent in Teams
+
+1. Go back to the **Publish** section in Azure AI Foundry
+2. Click **"Open in Teams"**
+3. This will deep-link directly to your agent in the Microsoft Teams desktop or web app
+
+![Open in Teams](images/20.png)
+
+---
+
+### 10.2 If the Agent Isn't Visible Yet
+
+Sometimes the app takes a few minutes to propagate through the Microsoft 365 ecosystem. If you don't see it automatically:
+
+![Manage Apps in Teams](images/15.png)
+
+1. Open **Microsoft Teams**
+2. Click on **"Apps"** in the left sidebar
+3. Click **"Manage your apps"** (bottom of the app panel)
+4. Use the search bar to search for your agent's name (e.g., `Contract Review Agent`)
+
+![Manage Apps in Teams](images/21.png)
+
+5. Click **"Add"** to install it
+
+![Manage Apps in Teams](images/22.png)
+
+---
+
+### 10.3 Connect the Agent to Azure AI Foundry
+
+The first time you open the agent in Teams, it will prompt you to **connect to Azure AI Foundry**. This is an authentication step that links your Teams session to your Foundry deployment.
+
+![Connect to Foundry](images/23.png)
+
+Follow the prompts:
+1. Click **"Connect"** when prompted
+2. Sign in with your Azure credentials if asked
+3. Authorize the connection
+
+Once connected, the agent is fully operational inside Teams.
+
+---
+
+### 10.4 Test the Full Flow in Teams
+
+Now repeat the test from Part 7, but this time entirely inside Teams:
+
+1. Open a conversation with your agent in Teams
+2. Click the **attachment icon** and upload your contract PDF
+3. Type:
+
+   ```
+   Review this contract and identify risky clauses
+   ```
+
+4. You should receive the same high-quality analysis you saw in the Azure portal — now living natively in Teams
+
+![Connect to Foundry](images/24.png)
+
+> **The magic moment:** Your colleagues can now interact with this agent without ever opening the Azure portal. They just open Teams, find the agent, upload a contract, and get instant analysis.
+
+---
+
+## Part 11 — Monitor Your Agent
+
+You've built and deployed an agent — now let's make sure it's running well. Azure AI Foundry has a built-in **Monitoring** section that gives you real-time and historical visibility into your agent's usage.
+
+![Monitoring Dashboard](images/26.png)
+
+### 11.1 Wait 10–15 Minutes
+
+After running some test queries (in the portal and in Teams), wait **10–15 minutes** for the telemetry data to flow into the monitoring dashboard.
+
+### 11.2 Open the Monitoring Section
+
+![Monitoring Dashboard](images/25.png)
+
+1. In the left sidebar, click **"Monitoring"**
+2. You'll see a dashboard with metrics including:
+
+| Metric | What it tells you |
+|---|---|
+| **Total requests** | How many times your agent was called |
+| **Total tokens used** | Input + output tokens consumed (directly maps to cost) |
+| **Average response latency** | How long users are waiting for responses |
+| **Error rate** | Failed requests that need investigation |
+| **Cost breakdown** | Estimated spend per model, per day |
+
+> **Why monitoring matters:** Token usage = cost. If your agent is being used more than expected or if token counts per conversation seem high, you can optimize your instructions or switch to a more cost-efficient model tier.
+
+---
+
+## Part 12 — Set Up Continuous Evaluation
+
+Monitoring tells you *how much* your agent is being used. **Evaluation** tells you *how well* it's performing. This is one of the most valuable — and most overlooked — features in Azure AI Foundry.
+
+### What is Continuous Evaluation?
+
+Continuous evaluation automatically scores your agent's responses against quality criteria on an ongoing basis. Instead of manually testing your agent after every change, Foundry does it for you and alerts you when quality drops.
+
+### 12.1 Open the Configure Section
+
+1. In the **Monitoring** section, click the **"Configure"** tab (or look for an **"Evaluation"** option in the sidebar)
+2. Find **"Continuous Evaluation"**
+
+![Continuous Evaluation](images/27.png)
+
+3. Toggle it to **Enabled**
+
+![Continuous Evaluation](images/28.png)
+
+---
+
+### 12.2 Choose Built-in Evaluators
+
+Once Continuous Evaluation is enabled, you'll be asked to select your evaluators. You have two options:
+
+![Continuous Evaluation](images/29.png)
+
+**Option A — Built-in Evaluators (recommended for getting started):**
+
+Azure AI Foundry includes a library of pre-built evaluators. Click **"Built-in eval"** to see the full list:
+
+| Evaluator | What it measures |
+|---|---|
+| **Groundedness** | Are the agent's responses supported by the source documents, or is it hallucinating? |
+| **Relevance** | Are responses actually answering the user's question? |
+| **Coherence** | Are responses logically structured and easy to follow? |
+| **Fluency** | Is the language natural and grammatically correct? |
+| **Similarity** | How close is the response to a "gold standard" ideal answer? |
+| **F1 Score** | Precision and recall of factual claims in the response |
+
+Select the evaluators most relevant to your use case. For a contract review agent, **Groundedness** and **Relevance** are the most critical — you need responses that are factually tied to the contract, not made up.
+
+**Option B — Custom Evaluators:**
+
+If you have specific quality criteria that the built-in evaluators don't cover, you can create custom evaluators by:
+1. Clicking **"Create custom eval"**
+2. Writing an evaluation prompt — essentially asking a separate LLM to judge the output
+3. Defining the scoring criteria (e.g., 1–5 scale, pass/fail)
+
+![Continuous Evaluation](images/30.png)
+
+> **Example custom evaluator prompt:**
+> *"On a scale of 1–5, how well does this response identify contractual risks? 5 = identifies all major risks with specific citations. 1 = misses obvious risks or provides unsupported claims."*
+
+
+---
+
+### 12.3 Submit the Evaluation Configuration
+
+1. After selecting your evaluators, click **"Submit"**
+2. Foundry will begin running evaluation jobs against your agent's conversation history
+3. Results appear in the Monitoring dashboard — you'll see quality scores over time, not just usage metrics
+
+> **The big picture:** When you combine monitoring (usage + cost) with continuous evaluation (quality scores), you have a complete picture of your agent's health. You'll know when to scale up, when to optimize, and when something has gone wrong — before your users tell you about it.
+
+---
+
+## Summary: What You Built Today
+
+Congratulations — here's a recap of everything you accomplished:
+
+| Step | What you did |
+|---|---|
+| ✅ Part 1 | Enabled the New Azure AI Foundry experience |
+| ✅ Part 2 | Created and configured an AI agent with a model and instructions |
+| ✅ Part 3 | Added File Search, Web Search, and Code Interpreter tools |
+| ✅ Part 4 | Connected Foundry IQ for enterprise knowledge graph access |
+| ✅ Part 5 | Added a persistent memory store for cross-session context |
+| ✅ Part 6 | Reviewed and customized safety guardrails |
+| ✅ Part 7 | Tested the agent with real contract review queries |
+| ✅ Part 8 | Saved the agent configuration |
+| ✅ Part 9 | Published the agent to Microsoft Teams and M365 Copilot |
+| ✅ Part 10 | Opened and verified the agent in Teams |
+| ✅ Part 11 | Monitored usage, token consumption, and cost |
+| ✅ Part 12 | Enabled continuous evaluation with built-in quality scorers |
+
+---
+
+## Key Concepts Cheat Sheet
+
+| Concept | Plain English |
+|---|---|
+| **Agent** | An AI assistant with a specific job, tools, and memory |
+| **Instructions (System Prompt)** | The rulebook the agent follows — defines its role and behavior |
+| **File Search** | Lets the agent read and reference uploaded documents |
+| **Foundry IQ** | Connects the agent to your organization's Microsoft 365 data |
+| **Memory Store** | A database that lets the agent remember things between sessions |
+| **Guardrails** | Safety filters that keep the agent on-task and appropriate |
+| **Monitoring** | Tracks usage, cost, and error rates in real time |
+| **Continuous Evaluation** | Automatically scores response quality on an ongoing basis |
+| **Groundedness** | Whether responses are backed by real sources (not hallucinated) |
+
+---
+
+## Troubleshooting
+
+**Agent gives generic responses:**
+→ Make your instructions more specific. Tell it exactly what format to use and what to look for.
+
+**File upload fails:**
+→ Check that the file is under 512 MB and in a supported format (PDF, DOCX, TXT, MD).
+
+**Agent not appearing in Teams:**
+→ Wait 5–10 minutes and try searching in Teams > Apps > Manage your apps.
+
+**Evaluation scores are low:**
+→ Start with Groundedness. If it's low, your agent may be hallucinating — tighten the instructions to stay grounded in the uploaded documents.
+
+**High token usage:**
+→ Consider switching to `gpt-4o-mini` for simpler queries, or add an instruction to keep responses concise.
+
+---
+
+*Built with Azure AI Foundry · Week 4 Lab · MLAI Community Labs*

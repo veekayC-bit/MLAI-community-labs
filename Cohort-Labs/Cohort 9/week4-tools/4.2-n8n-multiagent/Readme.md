@@ -94,9 +94,12 @@ Complete these setup labs before starting. You will need credentials from each o
 | [Snowflake Setup](../../week%200%20%20-%20foundation/snowflakeSetup/Readme.md) | Your Snowflake account identifier, username, password, and warehouse name (from the config file in Step 23 of that lab) |
 
 You will also need:
-- An **OpenAI API key**
-- A sample contract PDF (provided in this lab's `/assets` folder)
-- n8n running (cloud or local)
+
+| Item | Download |
+|---|---|
+| **OpenAI API key** | From your OpenAI account dashboard |
+| **Sample Contract PDF** | [Download here](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=ga6WWO) |
+| **n8n Workflow JSON** | [Download here](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQAuM68PR-hkSaY6uJ1JJUJtATvbVxF8y_3KKYIDxcZotww?e=36EEJi) |
 
 > If you have not completed the three setup labs above, stop here. Each credential used in this lab was generated and saved during those labs. You cannot complete the wiring steps without them.
 

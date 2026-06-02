@@ -1,6 +1,6 @@
 # Week 4 — AI Tools & Integrations
 
-This week covers building production-ready AI agents using real-world platforms and tools. Each lab is independent — you can complete them in any order, but Lab 4.2 requires the foundation setup labs to be done first.
+This week covers building  AI agents using real-world platforms and tools. Each lab is independent — you can complete them in any order, but Lab 4.2 requires the foundation setup labs to be done first.
 
 ---
 
