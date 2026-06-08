@@ -99,7 +99,7 @@ You will also need:
 |---|---|
 | **OpenAI API key** | From your OpenAI account dashboard |
 | **Sample Contract PDF** | [Download here](https://pragyaallc-my.sharepoint.com/:b:/g/personal/sachin_parmar_legalgraph_ai/IQC2WQJhhIuyRq5JrVY13FwNAdwS4M5gB5w-qzBAm9V4mRQ?e=ga6WWO) |
-| **n8n Workflow JSON** | [Download here](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQAuM68PR-hkSaY6uJ1JJUJtATvbVxF8y_3KKYIDxcZotww?e=36EEJi) |
+| **n8n Workflow JSON** | [Download here](https://pragyaallc-my.sharepoint.com/:u:/g/personal/sachin_parmar_legalgraph_ai/IQBAgQZ67JvLQInPPuVaOOrQATSUgdVf5Rl3OiKFbJuChOk?e=VncRoY) |
 
 > If you have not completed the three setup labs above, stop here. Each credential used in this lab was generated and saved during those labs. You cannot complete the wiring steps without them.
 
