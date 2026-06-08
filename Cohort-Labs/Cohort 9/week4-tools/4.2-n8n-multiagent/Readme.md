@@ -834,17 +834,16 @@ This step connects the boundary_guard_agent to your MongoDB Atlas database.
 
 ![image](./images/30.png)
 
-10. For the **Query JSON** field, click the **"Start"** icon and set it to **"Defined Automatically by the Model"**
-
-![image](./images/33.png)
-
-11. Click **"Add Description"** and paste:
+10.  For the **Query JSON** field, add the below expression
+   
+```
+{{ JSON.stringify($fromAI('mongo_query_filter', 'MongoDB query filter as JSON object', 'json')) }}
 
 ```
-MongoDB query filter as JSON object (e.g., {"status": "active"})
-```
 
-![image](./images/32.png)
+![image](./images/45.png)
+
+
 
 > What this does: when boundary_guard_agent decides what type of off-topic message it is (e.g. `greeting`, `small_talk`), it will automatically build a MongoDB query like `{"trigger_type": "greeting"}` and fetch the matching pre-written response. The agent decides the query — you do not hardcode it.
 
