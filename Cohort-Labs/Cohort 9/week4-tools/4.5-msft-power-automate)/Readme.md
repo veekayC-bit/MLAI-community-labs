@@ -14,7 +14,7 @@ With **150+ standard connectors** (and additional premium ones), Power Automate 
 
 # Note: Account Creation Prerequisite
 
-**To create your account and access the 30-day free trial, you will need a valid work or college email address. If you don't have a work or college email address, please don't go further. Reach out to our team and they will help you.**
+**To create your account and access the 30-day free trial, you will need a valid work or college email address.**
 
 ### Step 1:  
 > **Click on** [this link](https://make.powerautomate.com) **to be redirected to Power Automate.**
