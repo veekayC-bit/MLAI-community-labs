@@ -546,6 +546,94 @@ All chat session messages and user feedback are saved in Supabase automatically.
 
 ---
 
+## Phase 7 — Pushing Your Code to GitHub
+
+Your app is working. Now let's save your work to GitHub so it's backed up and shareable.
+
+### Why Push to GitHub?
+
+Right now your code only lives on your computer. If you lose your laptop, you lose everything. Pushing to GitHub means your work is safely stored in the cloud. It also means you can share your project with others, collaborate with teammates, and deploy it to a live server later.
+
+### Step 1: Check What Has Changed
+
+Open a terminal in VS Code (`Terminal > New Terminal`) and run:
+
+```
+git status
+```
+
+You'll see a list of files that have been added or modified since you cloned the repo. These are all the files Claude created for you.
+
+![image](./images/34.png)
+
+### Step 2: Make Sure Your .env File Is Protected
+
+Before adding any files, confirm that your `.env` file is listed in `.gitignore`. This file contains your secret API keys — **it must never be pushed to GitHub**.
+
+Run:
+
+```
+cat .gitignore
+```
+
+Look for a line that says `.env` or `.env.local`. If it's there, you're safe to continue. If it's not, run this command first to add it:
+
+```
+echo ".env" >> .gitignore
+```
+
+### Step 3: Stage All Your Changes
+
+Now add all your new and modified files to the staging area — this tells Git which files you want to include in your commit:
+
+```
+git add .
+```
+
+Run `git status` again and you'll see the files are now highlighted in green, meaning they're staged and ready to commit.
+
+### Step 4: Commit Your Changes
+
+A commit is a snapshot of your project at this moment in time. Give it a clear message describing what you built:
+
+```
+git commit -m "Build full-stack AI contract review app with Supabase and Azure AI"
+```
+
+You'll see a summary of how many files changed. This snapshot is now saved in your local Git history.
+
+### Step 5: Push to GitHub
+
+Now send your committed changes up to GitHub:
+
+```
+git push origin main
+```
+
+If your default branch is called `master` instead of `main`, use:
+
+```
+git push origin master
+```
+
+You'll see output showing the files being transferred. When it finishes, go to your forked repo on GitHub in the browser — refresh the page and you'll see all your new files there.
+
+![image](./images/git-push.png)
+
+> **Getting an authentication error?** GitHub no longer accepts passwords over HTTPS. If you're prompted for a password and get rejected, you need a **Personal Access Token (PAT)**. Go to GitHub → Settings → Developer Settings → Personal Access Tokens → Generate New Token. Give it `repo` scope, copy it, and use it as your password when prompted.
+
+### Quick Reference — Git Commands
+
+| What | Command |
+|---|---|
+| See what changed | `git status` |
+| Stage all changes | `git add .` |
+| Commit with a message | `git commit -m "your message"` |
+| Push to GitHub | `git push origin main` |
+| Pull latest changes | `git pull origin main` |
+
+---
+
 ## What You Just Built — And Why It Matters
 
 Let's zoom out for a moment.
@@ -582,6 +670,10 @@ That is the role of an AI-enabled product builder. You're not writing code — y
 | Build the app | `Use @.claude/skills/implementation/ Read all files in /specs and blueprint/app-plan.md build the complete app phase by phase. Install all dependencies and run the app when done.` |
 | Start dev server manually | `npm run dev` |
 | Azure integration | `Run @prompts/azure_integration.md and integrate the azure with my frontend` |
+| Check git status | `git status` |
+| Stage all changes | `git add .` |
+| Commit your work | `git commit -m "your message"` |
+| Push to GitHub | `git push origin main` |
 
 ---
 
