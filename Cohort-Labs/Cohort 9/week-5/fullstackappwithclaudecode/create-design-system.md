@@ -2,7 +2,7 @@
 
 ## Steps
 
-1. Open the Claude Code app
+1. Open the Claude Code apps
 
 ![image](./design/1.png)
 
